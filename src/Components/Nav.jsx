@@ -8,7 +8,7 @@ function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full h-[102px] flex justify-between items-center sticky top-0 py-5 px-10 bg-white shadow-md">
+    <nav className="w-full h-[102px] flex justify-around items-center sticky top-0 py-5 px-10 bg-white">
       <div className="w-full px-5 flex justify-between items-center">
         <img className="w-[100px]" src={logo} alt="Community logo" />
 
@@ -35,7 +35,7 @@ function Nav() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden w-full bg-white py-5 px-10 flex flex-col gap-5 items-center shadow-md">
+        <div className="md:hidden w-full bg-white p-5 flex flex-col gap-3 items-center shadow-md">
           <p>Home</p>
           <p>About</p>
           <p>Training</p>

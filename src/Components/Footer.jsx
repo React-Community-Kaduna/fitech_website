@@ -4,8 +4,8 @@ import footer_logo from "../assets/footer_logo.png";
 
 function Footer() {
   return (
-    <footer className="w-full bg-[#1978D4] border border-gray-200 py-5 px-10 md:fixed md:bottom-0 md:left-0">
-      <div className="flex flex-col md:flex-row gap-5 items-center justify-around text-white text-[10px]">
+    <footer className="w-full bg-[#1978D4] border border-gray-200 pt-5 md:fixed md:bottom-0 md:left-0">
+      <div className="w-full flex flex-col md:flex-row gap-5 items-center justify-around px-10 text-white text-[10px]">
         <div className="w-full md:w-[25%] leading-5">
           <img className="w-[100px]" src={footer_logo} alt="Community logo" />
           <p className="my-2">
@@ -44,6 +44,10 @@ function Footer() {
             Subscribe
           </button>
         </div>
+      </div>
+      <div className="w-full h-[70px] flex justify-center items-center border-t-2 text-center text-white text-[10px] mt-5">
+        <span>©</span>
+        <p>2024 Fitech. All Rights Reserved</p>
       </div>
     </footer>
   );
