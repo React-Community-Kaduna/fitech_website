@@ -1,3 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 72px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  p,
+  a {
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    /* line-height: 23.44px; */
+  }
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+button.slick-arrow {
+  background: #1e90ff;
+  border-radius: 100%;
+  border: 1px solid #1e90ff;
+}
+
+button.slick-arrow:hover {
+  background: #1e90ff;
+}

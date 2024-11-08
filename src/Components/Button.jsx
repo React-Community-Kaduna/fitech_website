@@ -1,9 +1,13 @@
 import React from "react";
 
-function Button() {
+function Button({ type, variant, className, children }) {
   return (
-    <button className="py-2 px-3 bg-blue-600 rounded-lg text-[white]">
-      Button
+    <button
+      type={type ? type : "button"}
+      variant={variant}
+      className={className ? `btn-component ${className}` : "btn-component"}
+    >
+      {children}
     </button>
   );
 }
