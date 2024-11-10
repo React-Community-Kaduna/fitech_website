@@ -118,7 +118,7 @@ function Home() {
                 alt="Fitech developers"
               />
             </div>
-            <div className="relative space-y-6 lg:px-0">
+            <div className="relative space-y-6 my-10 lg:px-0">
               <h3 className="text-2xl sm:text-3xl font-bold">
                 Fast Track Your Tech Career
               </h3>
@@ -141,36 +141,39 @@ function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="container mx-auto py-6">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-8">
-            Voices of Our Community! Real Stories, Real Impact.
-          </h3>
-          <ul className="flex flex-wrap gap-4 mb-8 text-sm lg:text-base">
-            <li className="cursor-pointer hover:text-[orangered]">STUDENTS</li>
-            <li className="cursor-pointer hover:text-[orangered]">MENTORS</li>
-            <li className="cursor-pointer hover:text-[orangered]">COMMUNITY</li>
-          </ul>
-          {/* <div className="flex flex-wrap gap-6 overflow-x-auto">
-                <Card />
-                <Card />
-              </div> */}
+        <section className="w-full flex flex-col justify-center items-center my-5 py-6">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-8">
+              Voices of Our Community! Real Stories, Real Impact.
+            </h3>
+            <ul className="flex flex-wrap gap-4 mb-8 text-sm lg:text-base">
+              <li className="cursor-pointer hover:text-[orangered]">
+                STUDENTS
+              </li>
+              <li className="cursor-pointer hover:text-[orangered]">MENTORS</li>
+              <li className="cursor-pointer hover:text-[orangered]">
+                COMMUNITY
+              </li>
+            </ul>
+          </div>
+
           <Carousel />
         </section>
 
         {/* Join Community Section */}
-        <section className="container mx-auto py-6">
+        <section className="w-full my-10">
           <div className="relative rounded-lg overflow-hidden">
             <img
-              className="w-full h-auto bg-[#1E90FF]"
+              className="w-full shadow- bg-[#6da0af]"
               src={blue_bg}
               alt="background"
             />
             <div className="absolute inset-0 flex items-center">
-              <div className="text-white space-y-6 p-8 lg:p-12 w-full">
+              <div className="text-white p-8  lg:p-12 w-full">
                 <h3 className="text-2xl sm:text-3xl font-bold">
                   Join Our Community
                 </h3>
-                <p className="text-base">
+                <p className="text-base lg:text-[22px] my-10">
                   Join our tech community and unlock a world of support,
                   innovation, and growth
                 </p>
