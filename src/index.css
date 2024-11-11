@@ -49,6 +49,12 @@
 
 .slick-slide > div {
   margin: 0 10px;
+  border: none;
+  outline: none;
+}
+
+.slick-slide div:focus {
+  outline: none;
 }
 
 button.slick-arrow {
