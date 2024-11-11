@@ -34,7 +34,7 @@ let data = [
     img: cardImg,
   },
   {
-    name: "Ebube Onora",
+    name: "Ebube Onuora",
     review:
       "Joining FiTech was a game-changer for me. Their comprehensive training program not only honed my web development skills but also provided invaluable career guidance. With their support, I built a strong portfolio and gained the confidence to ace my interviews. Thanks to FiTech, I landed my first job as a web developer, and I couldn't be more grateful for their mentorship and support.",
     description: "Web3 Developer at Spillage",
