@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from "react";
 import bg from "../assets/hero_bg_about.png";
 import cardImg1 from "../assets/faith.png";
 import cardImg2 from "../assets/mayowa.png";
@@ -52,8 +53,39 @@ let data = [
 ];
 
 function Members() {
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-in");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions
+    );
+
+    cardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardRefs.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, []);
+
   return (
-    <section className="">
+    <section className="bg-[#e5e5e5]">
       <div className="absolute inset-0">
         <img
           src={bg}
@@ -63,8 +95,11 @@ function Members() {
       </div>
       <div className="flex flex-col justify-center text-center">
         <button
-          className="font-medium text-[18px] sm:text-[24px] md:text-[28px] lg:text-[30px] px-4 sm:px-6 md:px-8 lg:px-[20px] lg:py-[5px] rounded-full w-[90%] sm:w-[70%] md:w-[40%] lg:w-[18%] block mx-auto"
-          style={{ border: "1px solid rgba(255, 135, 43, 1)", color:"rgba(30, 144, 255, 1)" }}
+          className="font-medium text-[18px] sm:text-[24px] md:text-[28px] lg:text-[26px] px-4 sm:px-6 md:px-8 lg:px-[20px] lg:py-[5px] rounded-full w-[90%] sm:w-[70%] md:w-[40%] lg:w-[18%] block mx-auto"
+          style={{
+            border: "1px solid rgba(255, 135, 43, 1)",
+            color: "rgba(30, 144, 255, 1)",
+          }}
         >
           Meet Our Team
         </button>
@@ -74,12 +109,13 @@ function Members() {
       </div>
 
       {/* teams section */}
-      <div className="container mx-auto pt-[3.5rem] bg-white relative z-1000">
+      <div className="container mx-auto pt-[3.5rem] bg-[#e5e5e5] relative z-1000">
         <div className="flex flex-wrap justify-center gap-6">
           {data.map((member, index) => (
             <div
               key={index}
-              className="w-[302px] md:w-[300px] h-[411px] p-3 bg-white rounded-lg flex flex-col  "
+              ref={(el) => (cardRefs.current[index] = el)}
+              className="w-[302px] md:w-[300px] h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col opacity-0 translate-y-10 transition-all duration-700"
               style={{
                 border: "2px solid rgba(255, 207, 170, 1)",
               }}
@@ -97,6 +133,13 @@ function Members() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        .animate-in {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+      `}</style>
     </section>
   );
 }
