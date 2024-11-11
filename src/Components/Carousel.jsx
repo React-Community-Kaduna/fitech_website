@@ -98,7 +98,7 @@ const Carousel = () => {
         <Slider {...settings}>
           {data.map((d) => (
             <div
-              className="shadow-3xl border-2 w-full h-[350px] md:h-[400px] lg:h-[600px] rounded-lg overflow-hidden"
+              className="shadow-3xl border-2 w-full h-[350px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden"
               key={d.name}
             >
               <div className="shadow-lg flex flex-row-reverse h-full">

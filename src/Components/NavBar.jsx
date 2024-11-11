@@ -28,7 +28,7 @@ function NavBar() {
 
   return (
     <div className="shadow-md w-full fixed top-0 left-0 z-50">
-      <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
+      <div className="md:flex items-center justify-between bg-[#e5e5e5] py-4 px-7">
         <div className="font-bold text-2xl cursor-pointer flex items-center">
           <img className="w-[150px]" src={logo} alt="Community logo" />
         </div>
@@ -39,7 +39,7 @@ function NavBar() {
           {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
         </button>
         <ul
-          className={`md:flex md:items-center md:pb-5 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+          className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
             isMenuOpen ? "top-10 opacity-100" : "top-[-490px]"
           }`}
         >
@@ -54,10 +54,10 @@ function NavBar() {
             </li>
           ))}
           <span className="flex flex-col md:flex-row gap-5 md:ml-[200px]">
-            <Button className="bg-[#1E90FF] px-5 py-3 rounded md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+            <Button className="bg-[#1E90FF] p-3 rounded md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Join Us
             </Button>
-            <Button className="bg-none border-2 px-5 py-3 rounded hover:bg-gray-500 hover:text-white duration-500">
+            <Button className="bg-none px-5 py-3 border-2 border-white rounded hover:bg-gray-500 hover:text-white duration-500">
               Contact Us
             </Button>
           </span>

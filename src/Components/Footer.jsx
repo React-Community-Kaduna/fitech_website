@@ -1,6 +1,31 @@
 import React from "react";
 import footer_logo from "../assets/footer_logo.png";
 import Button from "./Button";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa6";
+import { FaDiscord } from "react-icons/fa";
+
+let Links = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "About",
+    link: "/about",
+  },
+  {
+    name: "Trainings",
+    link: "/trainings",
+  },
+  {
+    name: "Blogs",
+    link: "/blog",
+  },
+];
 
 function Footer() {
   return (
@@ -23,7 +48,23 @@ function Footer() {
               <h4 className="text-base sm:text-lg font-medium">
                 Connect with us
               </h4>
-              <div className="flex space-x-4">icon icon icon icon</div>
+              <ul className="flex space-x-4">
+                <li>
+                  <a href="https://youtube.com/@FitechCommunity/">
+                    <FaYoutube />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/Fitechcommunity?s=09">
+                    <FaXTwitter />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://discord.gg/9REgpp5r">
+                    <FaDiscord />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
