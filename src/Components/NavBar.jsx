@@ -15,12 +15,20 @@ function NavBar() {
       link: "/about",
     },
     {
-      name: "Trainings",
-      link: "/trainings",
+      name: "Training",
+      link: "/training",
+    },
+    {
+      name: "Registration",
+      link: "/registration",
     },
     {
       name: "Blogs",
       link: "/blog",
+    },
+    {
+      name: "ErrorPage",
+      link: "/*",
     },
   ];
 

@@ -1,6 +1,9 @@
 import React from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Trainings from "./pages/Training";
+import Registration from "./pages/Registration";
+import Blog from "./pages/Blog/";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -12,14 +15,18 @@ const router = createBrowserRouter([
     path: "/about",
     element: <About />,
   },
-  // {
-  //   path: "/training",
-  //   element: <Training />,
-  // },
-  // {
-  //   path: "/blog",
-  //   element: <Blog />,
-  // },
+  {
+    path: "/training",
+    element: <Trainings />,
+  },
+  {
+    path: "/registration",
+    element: <Registration />,
+  },
+  {
+    path: "/blog",
+    element: <Blog />,
+  },
 ]);
 
 function App() {
