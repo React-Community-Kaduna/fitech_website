@@ -42,7 +42,7 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-none">
       <NavBar />
 
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">
@@ -60,10 +60,10 @@ function Home() {
                 Empowering Tech Innovators Across Africa and Beyond
               </h1>
               <div className="flex flex-wrap gap-3 md:gap-4">
-                <Button className="bg-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
+                <Button className="bg-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
                   Join next cohort
                 </Button>
-                <Button className="bg-none border-2 border-white px-4 md:px-5 py-2 md:py-3 rounded hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
+                <Button className="bg-none border-2 border-white px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
                   Learn more
                 </Button>
               </div>

@@ -15,20 +15,12 @@ function NavBar() {
       link: "/about",
     },
     {
-      name: "Training",
+      name: "Trainings",
       link: "/training",
-    },
-    {
-      name: "Registration",
-      link: "/registration",
     },
     {
       name: "Blogs",
       link: "/blog",
-    },
-    {
-      name: "ErrorPage",
-      link: "/*",
     },
   ];
 
@@ -62,10 +54,10 @@ function NavBar() {
             </li>
           ))}
           <span className="flex flex-col md:flex-row gap-5 md:ml-[200px]">
-            <Button className="bg-[#1E90FF] p-3 rounded md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+            <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Join Us
             </Button>
-            <Button className="bg-none px-5 py-3 border-2 border-white rounded hover:bg-gray-500 hover:text-white duration-500">
+            <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
               Contact Us
             </Button>
           </span>

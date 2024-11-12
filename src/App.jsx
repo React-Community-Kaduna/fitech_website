@@ -1,9 +1,10 @@
 import React from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Trainings from "./pages/Training";
+import Training from "./pages/Training";
 import Registration from "./pages/Registration";
 import Blog from "./pages/Blog/";
+// import NotFound from "./pages/NotFound";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/training",
-    element: <Trainings />,
+    element: <Training />,
   },
   {
     path: "/registration",
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     path: "/blog",
     element: <Blog />,
   },
+  // {
+  //   path: "*",
+  //   element: <NotFound />,
+  // },
 ]);
 
 function App() {
