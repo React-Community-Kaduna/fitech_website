@@ -75,9 +75,9 @@ const Training = () => {
 
       <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <section className="text-center">
-          <h2 className="text-3xl font-bold mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-800tld mb-4">
             Choose the Perfect Course for Your Career
-          </h2>
+          </h3>
           <p>Find the Ideal course to move your career forward</p>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-10 mt-8">
             {data.map((item, index) => (
@@ -162,9 +162,9 @@ const Training = () => {
           }}
         >
           <div className="w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl mb-4 text-white text-center">
+            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white text-center">
               Get Updates For Free
-            </h2>
+            </h3>
             <p>
               Subscribe to our newsletter and never miss out on updates offers
               and expert insights

@@ -57,7 +57,7 @@ function Home() {
               variants={fadeUp}
               className="space-y-4 md:space-y-6 md:pr-4 lg:pr-5 md:border-r-2 lg:border-r-2 border-gray-400"
             >
-              <h1 className="text-3xl md:text-3xl lg:text-4xl text-grey-100">
+              <h1 className="text-2xl md:text-3xl text-gray-900">
                 Empowering Tech Innovators Across Africa and Beyond
               </h1>
               <div className="flex flex-wrap gap-3 md:gap-4">
@@ -149,8 +149,10 @@ function Home() {
               variants={fadeUp}
               className="max-w-2xl md:max-w-3xl mx-auto text-center space-y-4 md:space-y-6 relative z-10"
             >
-              <h3 className="text-2xl md:text-3xl font-bold">Who we are</h3>
-              <div className="space-y-3 md:space-y-4 text-base md:text-lg px-4 w-full">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+                Who we are
+              </h3>
+              <div className="space-y-3 md:space-y-4 text-base text-gray-800 md:text-lg px-4 w-full">
                 <p>
                   Fitech is a vibrant community of tech enthusiasts from various
                   specialties, providing support to advance careers and bring
@@ -203,7 +205,7 @@ function Home() {
               variants={fadeUp}
               className="relative space-y-4 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
             >
-              <h3 className="text-2xl md:text-3xl font-bold">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-800">
                 Fast Track Your Tech Career
               </h3>
               <p className="text-base md:text-lg">
@@ -237,7 +239,7 @@ function Home() {
           className="w-full flex flex-col justify-center items-center my-4 md:my-5 py-4 md:py-6"
         >
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 md:mb-8">
               Voices of Our Community! Real Stories, Real Impact.
             </h3>
             <ul className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 text-sm md:text-base">
@@ -276,7 +278,7 @@ function Home() {
                 viewport={{ once: false }}
                 className="text-white p-6 md:p-8 lg:p-12 w-full"
               >
-                <h3 className="text-2xl md:text-3xl font-bold">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-800">
                   Join Our Community
                 </h3>
                 <p className="text-base md:text-lg lg:text-[22px] my-6 md:my-10">

@@ -35,16 +35,13 @@ function NavBar() {
             <Link to="/training">Trainings</Link>
           </li>
           <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
-            <Link to="/registration">Registration</Link>
-          </li>
-          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
             <Link to="/events">Events</Link>
           </li>
           <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
             <Link to="/blog">Blogs</Link>
           </li>
 
-          <span className="flex flex-col md:flex-row gap-5 md:ml-[50px]">
+          <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
             <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Join Us
             </Button>

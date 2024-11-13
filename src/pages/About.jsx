@@ -59,12 +59,12 @@ function About() {
               {...slideIn}
               className="relative z-10 w-full p-6 lg:pl-24"
             >
-              <motion.h2
+              <motion.h1
                 {...fadeInUp}
                 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 mt-5 sm:-mt-0"
               >
                 Uniting Innovators <br /> and Tech Enthusiasts
-              </motion.h2>
+              </motion.h1>
               <motion.p
                 {...fadeInUp}
                 className="mt-4 text-base lg:text-lg mb-10"
@@ -97,7 +97,7 @@ function About() {
             >
               <motion.h2
                 {...fadeInUp}
-                className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 mt-5 sm:mt-0"
+                className="text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
               >
                 Our Journey
               </motion.h2>
@@ -142,12 +142,12 @@ function About() {
               {...slideIn}
               className="px-7 sm:px-3 max-w-xl lg:ml-[5rem]"
             >
-              <motion.h2
+              <motion.h3
                 {...fadeInUp}
-                className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 mt-5 sm:mt-0"
+                className="text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
               >
                 Our Mission
-              </motion.h2>
+              </motion.h3>
               <motion.p
                 {...fadeInUp}
                 className="font-[400] mt-4 text-base lg:text-lg mb-10"

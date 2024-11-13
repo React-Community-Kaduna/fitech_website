@@ -91,9 +91,9 @@ function Blog() {
             />
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
               <div className="w-full py-5 md:max-w-3xl">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                   The world of Tech and what the future holds
-                </h1>
+                </h3>
                 <p className="text-lg mb-6">
                   Artificial Intelligence (AI) is revolutionizing the world of
                   coding, transforming how developers approach software
