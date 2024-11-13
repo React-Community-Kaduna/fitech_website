@@ -32,6 +32,10 @@ const router = createBrowserRouter([
     name: "Regitration",
     link: "/registration",
   },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
   // {
   //   path: "*",
   //   element: <NotFound />,
