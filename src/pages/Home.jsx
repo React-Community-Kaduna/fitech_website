@@ -10,6 +10,7 @@ import blue_bg from "../assets/blueBg.png";
 import frame_img from "../assets/Frame 85.png";
 import NavBar from "../Components/NavBar";
 import Carousel from "../Components/Carousel";
+import { Link } from "react-router-dom";
 
 function Home() {
   // Animation variants for fade-up effect
@@ -60,12 +61,16 @@ function Home() {
                 Empowering Tech Innovators Across Africa and Beyond
               </h1>
               <div className="flex flex-wrap gap-3 md:gap-4">
-                <Button className="bg-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
-                  Join next cohort
-                </Button>
-                <Button className="bg-none border-2 border-white px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
-                  Learn more
-                </Button>
+                <Link to="/registration">
+                  <Button className="bg-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
+                    Join next cohort
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button className="bg-none border-2 border-white px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
+                    Learn more
+                  </Button>
+                </Link>
               </div>
             </motion.div>
 

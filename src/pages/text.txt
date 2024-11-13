@@ -8,6 +8,12 @@ import card2 from "../assets/cardBg2.jpeg";
 import card3 from "../assets/cardBg3.jpeg";
 import BSBG from "../assets/blogsecBg.jpeg";
 import AIBG from "../assets/aiBg.jpeg";
+import bkg from "../assets/back.jpeg";
+import bckdrp from "../assets/Rectangle 5806.png";
+import { IoSchoolOutline } from "react-icons/io5";
+import { PiChalkboardTeacherThin } from "react-icons/pi";
+import { GoBriefcase } from "react-icons/go";
+import { TbWorldDollar } from "react-icons/tb";
 
 const posts = [
   {
@@ -34,18 +40,11 @@ const posts = [
       "Artificial intelligence (AI) is transforming various industries, including healthcare, finance, and transportation. AI enables machines to learn, reason, and make decisions, leading to advancements in areas such as natural language processing, computer vision, and robotics. ",
     image: AIBG,
   },
-  {
-    title: "The Future of Web Development",
-    description:
-      "The future of web development is promising, with emerging technologies such as serverless computing, microservices, and progressive web applications (PWAs) shaping the landscape. These advancements aim to enhance performance, scalability, and user experience in web development.",
-    image: BSBG,
-  },
 ];
 
 function Blog() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Hero Section */}
+    <div className="min-h-screen flex flex-col bg-transparent">
       <section className="relative w-full h-screen mt-[50px] md:mt-[100px] bg-transparent">
         <div
           className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
@@ -77,63 +76,59 @@ function Blog() {
           </div>
         </div>
       </section>
-
-      <main className="flex-1 container mx-auto px-4 py-12">
-        {/* Featured Post Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8">Recent Posts</h2>
-          <div className="relative w-full rounded-2xl overflow-hidden h-[400px] md:h-[500px]">
+      <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section>
+          <h2 className="text-[32px] mb-5">Recent Posts</h2>
+          <div className="relative w-full rounded-2xl overflow-hidden">
             <div
               className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
               style={{
                 backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url(${BSBG})`,
               }}
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <div className="w-full py-5 md:max-w-3xl">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-                  The world of Tech and what the future holds
+            <div className="h-screen relative z-1 bg-transparent">
+              <div className="w-full md:w-[800px] text-white py-16 px-4 sm:px-6 lg:px-8 absolute bottom-5 left-5">
+                <h1 className="text-3xl mb-4 text-white">
+                  The world of Tech and what the future holds.
                 </h1>
-                <p className="text-lg mb-6">
+                <p>
                   Artificial Intelligence (AI) is revolutionizing the world of
                   coding, transforming how developers approach software
                   creation. With AI-powered tools, coding .....
                 </p>
-                <div className="flex flex-col sm:flex-row gap-6">
+                <div className="w-full md:w-[500px] p-2 flex md:flex-row items-center gap-5 mt-8">
                   <div>
-                    <p className="text-sm opacity-75">Written by</p>
-                    <p className="font-medium">Daniel Ochoja</p>
+                    <p>Written by</p>
+                    <p>Daniel Ochoja</p>
                   </div>
                   <div>
-                    <p className="text-sm opacity-75">Published On</p>
-                    <p className="font-medium">26 November 2024</p>
+                    <p>Published On</p>
+                    <p>26 November 2024</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        {/* All Posts Grid */}
-        <section>
-          <h2 className="text-2xl md:text-3xl font-bold mb-8">All Posts</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section className="w-full mt-12">
+          <h2 className="text-[32px] mb-5">All Posts</h2>
+          <div className="w-full flex flex-col md:flex-row justify-center items-center gap-3">
             {posts.map((post) => (
               <div
                 key={post.title}
-                className="rounded-t-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="w-full md:w-[300px] h-[400px] rounded-t-2xl overflow-hidden"
               >
                 <img
                   src={post.image}
                   alt={post.title}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-4">
-                  <div className="text-sm text-gray-600 mb-2">
-                    Daniel Ochoja | 26th Nov. 2024
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
-                  <p className="text-gray-600 text-sm line-clamp-3">
+                <span className="text-[8px]">Daniel Ochoja | 26th Nov. 2024</span>
+                <div className="">
+                  <h5 className="text-[12px] font-semibold">
+                    {post.title}
+                  </h5>
+                  <p className="text-gray-900 text-[10px]">
                     {post.description}
                   </p>
                 </div>
@@ -142,7 +137,6 @@ function Blog() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

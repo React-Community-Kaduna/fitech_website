@@ -13,6 +13,7 @@ import { IoSchoolOutline } from "react-icons/io5";
 import { PiChalkboardTeacherThin } from "react-icons/pi";
 import { GoBriefcase } from "react-icons/go";
 import { TbWorldDollar } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const data = [
   {
@@ -59,12 +60,14 @@ const Training = () => {
               skills and transform your career
             </p>
             <div className="flex flex-col md:flex-row">
-              <Button className="bg-[#1E90FF] p-3 rounded-lg hover:bg-gray-500 duration-500 text-[white] mb-4 md:mb-0 md:mr-4 md:w-auto w-full">
-                Register Now
-              </Button>
-              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
+              <Link to="/registration">
+                <Button className="bg-[#1E90FF] p-3 rounded-lg hover:bg-gray-500 duration-500 text-[white] mb-4 md:mb-0 md:mr-4 md:w-auto w-full">
+                  Register Now
+                </Button>
+              </Link>
+              {/* <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
                 Explore Courses
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -101,9 +104,11 @@ const Training = () => {
                   <p className="text-gray-600">{item.description}</p>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full p-5 flex items-center justify-center">
-                  <Button className="bg-[#1E90FF] p-3 w-full rounded-lg hover:bg-gray-500 duration-500 text-[white]">
-                    Apply
-                  </Button>
+                  <Link className="w-full" to="/registration">
+                    <Button className="bg-[#1E90FF] p-3 w-full rounded-lg hover:bg-gray-500 duration-500 text-[white]">
+                      Apply
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}

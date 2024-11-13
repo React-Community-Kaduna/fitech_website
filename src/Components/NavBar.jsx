@@ -3,6 +3,7 @@ import logo from "../assets/logo.png";
 import Button from "./Button";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   let Links = [
@@ -17,6 +18,14 @@ function NavBar() {
     {
       name: "Trainings",
       link: "/training",
+    },
+    {
+      name: "Regitration",
+      link: "/registration",
+    },
+    {
+      name: "Events",
+      link: "/events",
     },
     {
       name: "Blogs",
@@ -53,7 +62,7 @@ function NavBar() {
               </a>
             </li>
           ))}
-          <span className="flex flex-col md:flex-row gap-5 md:ml-[200px]">
+          <span className="flex flex-col md:flex-row gap-5 md:ml-[50px]">
             <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Join Us
             </Button>
