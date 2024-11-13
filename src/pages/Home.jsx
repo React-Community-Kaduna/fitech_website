@@ -43,7 +43,7 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-none">
+    <div className="w-full min-h-screen flex flex-col bg-none">
       <NavBar />
 
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">

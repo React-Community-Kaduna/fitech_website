@@ -6,33 +6,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 
 function NavBar() {
-  let Links = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "About",
-      link: "/about",
-    },
-    {
-      name: "Trainings",
-      link: "/training",
-    },
-    {
-      name: "Regitration",
-      link: "/registration",
-    },
-    {
-      name: "Events",
-      link: "/events",
-    },
-    {
-      name: "Blogs",
-      link: "/blog",
-    },
-  ];
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -52,16 +25,25 @@ function NavBar() {
             isMenuOpen ? "top-10 opacity-100" : "top-[-490px]"
           }`}
         >
-          {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <a
-                href={link.link}
-                className="text-gray-800 hover:text-gray-400 duration-500"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
+            <Link to="/training">Trainings</Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
+            <Link to="/registration">Registration</Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
+            <Link to="/events">Events</Link>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500">
+            <Link to="/blog">Blogs</Link>
+          </li>
+
           <span className="flex flex-col md:flex-row gap-5 md:ml-[50px]">
             <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Join Us

@@ -3,8 +3,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Training from "./pages/Training";
 import Registration from "./pages/Registration";
+import Events from "./pages/Events";
 import Blog from "./pages/Blog/";
-// import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -25,21 +26,17 @@ const router = createBrowserRouter([
     element: <Registration />,
   },
   {
-    name: "Events",
-    link: "/events",
+    path: "/events",
+    element: <Events />,
   },
   {
-    name: "Regitration",
-    link: "/registration",
+    path: "/blog",
+    element: <Blog />,
   },
   {
-    name: "Blog",
-    link: "/blog",
+    path: "*",
+    element: <NotFound />,
   },
-  // {
-  //   path: "*",
-  //   element: <NotFound />,
-  // },
 ]);
 
 function App() {
