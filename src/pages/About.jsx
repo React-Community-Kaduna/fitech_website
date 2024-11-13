@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
@@ -10,8 +10,15 @@ import aboutImg2 from "../assets/aboutImg2.png";
 import aboutImg3 from "../assets/aboutImg3.png";
 import frame from "../assets/aboutframe.png";
 import Members from "../Components/Members";
+import { Link } from "react-router-dom";
+
+import logo from "../assets/logo.png";
+import { MdOutlineClose } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 function About() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
@@ -42,7 +49,52 @@ function About() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <NavBar />
+      <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
+        <div className="md:flex items-center justify-between py-4 px-7 z-50">
+          <div className="font-bold text-2xl cursor-pointer flex items-center">
+            <Link to="/">
+              <img className="w-[150px]" src={logo} alt="Community logo" />
+            </Link>
+          </div>
+          <button
+            className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+            onClick={() => setIsMenuOpen((e) => !e)}
+          >
+            {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
+          </button>
+          <ul
+            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-490px]"
+            }`}
+          >
+            {/* Menu items */}
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/about">About</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/training">Trainings</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/events">Events</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/blog">Blogs</Link>
+            </li>
+
+            <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
+              <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                Join Us
+              </Button>
+              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                Contact Us
+              </Button>
+            </span>
+          </ul>
+        </div>
+      </NavBar>
       <main className="flex-1 w-full mt-10 md:mt-[150px] overflow-x-hidden">
         {/* Hero Section */}
         <section className="relative container mx-auto py-6 overflow-hidden">
@@ -61,7 +113,7 @@ function About() {
             >
               <motion.h1
                 {...fadeInUp}
-                className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 mt-5 sm:-mt-0"
+                className="text-2xl md:text-3xl text-gray-900 mb-4 sm:mb-6 mt-5 sm:-mt-0"
               >
                 Uniting Innovators <br /> and Tech Enthusiasts
               </motion.h1>
@@ -160,9 +212,11 @@ function About() {
                 {...fadeInUp}
                 className="flex flex-col sm:flex-row gap-5 mt-5"
               >
-                <Button className="bg-[#1E90FF] px-6 py-2 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
-                  Join next Cohort
-                </Button>
+                <Link to="/registration" className="w-full sm:w-auto">
+                  <Button className="bg-[#1E90FF] px-6 py-2 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
+                    Join next Cohort
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
 
@@ -194,7 +248,7 @@ function About() {
             >
               <motion.h2
                 {...fadeInUp}
-                className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
+                className="text-xl md:text-2xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
               >
                 Community Impact
               </motion.h2>

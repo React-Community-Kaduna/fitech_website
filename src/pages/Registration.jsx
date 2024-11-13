@@ -3,6 +3,22 @@ import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 
 function Registration() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="min-h-screen flex flex-col">
       <NavBar />

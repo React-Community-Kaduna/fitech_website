@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import logo from "../assets/logo.png";
+import { MdOutlineClose } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
 import Footer from "../Components/Footer";
 import Button from "../Components/Button";
@@ -13,6 +16,23 @@ import Carousel from "../Components/Carousel";
 import { Link } from "react-router-dom";
 
 function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   // Animation variants for fade-up effect
   const fadeUp = {
     hidden: { opacity: 0, y: 20 },
@@ -44,7 +64,52 @@ function Home() {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-none">
-      <NavBar />
+      <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
+        <div className="md:flex items-center justify-between py-4 px-7 z-50">
+          <div className="font-bold text-2xl cursor-pointer flex items-center">
+            <Link to="/">
+              <img className="w-[150px]" src={logo} alt="Community logo" />
+            </Link>
+          </div>
+          <button
+            className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+            onClick={() => setIsMenuOpen((e) => !e)}
+          >
+            {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
+          </button>
+          <ul
+            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-490px]"
+            }`}
+          >
+            {/* Menu items */}
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/about">About</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/training">Trainings</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/events">Events</Link>
+            </li>
+            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+              <Link to="/blog">Blogs</Link>
+            </li>
+
+            <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
+              <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                Join Us
+              </Button>
+              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                Contact Us
+              </Button>
+            </span>
+          </ul>
+        </div>
+      </NavBar>
 
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">
         {/* Hero Section */}
@@ -79,9 +144,9 @@ function Home() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="space-y-4 md:space-y-6 md:pl-4 lg:pl-8"
+              className="space-y-4 md:space-y-6 md:pl-4 lg:pl-8 text-gray-800"
             >
-              <p className="text-base md:text-lg">
+              <p className="text-base md:text-sm">
                 Join our tech community and unlock a world of support,
                 innovation, and growth. Connect with like-minded professionals,
                 access cutting-edge resources, and receive mentorship to propel
@@ -98,7 +163,7 @@ function Home() {
                     key={index}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     variants={statCounter}
                     className="md:text-left text-center"
                   >
@@ -117,7 +182,7 @@ function Home() {
         <motion.section
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           variants={fadeIn}
           className="container mx-auto py-6 md:py-8"
         >
@@ -174,9 +239,11 @@ function Home() {
                 </p>
               </div>
               <div className="pt-6 md:pt-8">
-                <Button className="bg-[#1E90FF] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
-                  More About Us
-                </Button>
+                <Link to="/about">
+                  <Button className="bg-[#1E90FF] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
+                    More About Us
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -203,20 +270,22 @@ function Home() {
               whileInView="visible"
               viewport={{ once: false, margin: "-100px" }}
               variants={fadeUp}
-              className="relative space-y-4 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
+              className="h-auto relative space-y-4 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
             >
               <h3 className="text-xl md:text-2xl font-bold text-gray-800">
                 Fast Track Your Tech Career
               </h3>
-              <p className="text-base md:text-lg">
+              <p className="text-base md:text-lg mb-10">
                 Be part of our comprehensive training program, designed to equip
                 you with the latest skills and knowledge in the tech industry.
                 Our expert-led workshops and hands-on sessions will help you
                 grow your expertise and advance your career.
               </p>
-              <Button className="bg-[#1E90FF] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
-                Register Now
-              </Button>
+              <Link to="/training">
+                <Button className="bg-[#1E90FF] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
+                  Register Now
+                </Button>
+              </Link>
               <motion.img
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 0.5, x: 0 }}
@@ -278,7 +347,7 @@ function Home() {
                 viewport={{ once: false }}
                 className="text-white p-6 md:p-8 lg:p-12 w-full"
               >
-                <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+                <h3 className="text-xl md:text-2xl font-bold text-white">
                   Join Our Community
                 </h3>
                 <p className="text-base md:text-lg lg:text-[22px] my-6 md:my-10">

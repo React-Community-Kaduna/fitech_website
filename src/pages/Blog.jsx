@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/blogBg.jpeg";
@@ -8,6 +8,11 @@ import card2 from "../assets/cardBg2.jpeg";
 import card3 from "../assets/cardBg3.jpeg";
 import BSBG from "../assets/blogsecBg.jpeg";
 import AIBG from "../assets/aiBg.jpeg";
+
+import logo from "../assets/logo.png";
+import { MdOutlineClose } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 const posts = [
   {
@@ -43,10 +48,28 @@ const posts = [
 ];
 
 function Blog() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
-      <section className="relative w-full h-screen mt-[50px] md:mt-[100px] bg-transparent">
+      <section className="relative w-full h-screen mt-0 bg-transparent">
         <div
           className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
           style={{
@@ -54,9 +77,62 @@ function Blog() {
           }}
         />
         <div className="relative z-10 bg-transparent">
-          <NavBar />
+          <NavBar
+            className={`w-full fixed top-0 left-0 z-50 ${
+              isScrolled
+                ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
+                : "bg-transparent"
+            } transition-colors duration-500`}
+          >
+            <div className="md:flex items-center justify-between py-4 px-7 z-50">
+              <div className="font-bold text-2xl cursor-pointer flex items-center">
+                <Link to="/">
+                  <img className="w-[150px]" src={logo} alt="Community logo" />
+                </Link>
+              </div>
+              <button
+                className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+                onClick={() => setIsMenuOpen((e) => !e)}
+              >
+                {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
+              </button>
+              <ul
+                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+                  isMenuOpen
+                    ? "top-0 opacity-100 pt-14"
+                    : "top-[-490px] text-white"
+                }`}
+              >
+                {/* Menu items */}
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/about">About</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/training">Trainings</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/events">Events</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/blog">Blogs</Link>
+                </li>
+
+                <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
+                  <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                    Join Us
+                  </Button>
+                  <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                    Contact Us
+                  </Button>
+                </span>
+              </ul>
+            </div>
+          </NavBar>
           <div className="w-full md:w-[800px] h-screen mx-auto flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl mb-4 text-white text-center">
+            <h1 className="text-3xl md:text-4xl mb-4 text-white text-center">
               News, Articles and Insights on Tech{" "}
             </h1>
             <p>

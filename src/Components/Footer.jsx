@@ -7,26 +7,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa";
-
-
-let Links = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "About",
-    link: "/about",
-  },
-  {
-    name: "Trainings",
-    link: "/trainings",
-  },
-  {
-    name: "Blogs",
-    link: "/blog",
-  },
-];
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -36,7 +17,7 @@ function Footer() {
           {/* Logo and About Section */}
           <div className="">
             <img
-              className="w-[100px] h-auto"
+              className="w-[100px] h-auto mb-3"
               src={footer_logo}
               alt="Community logo"
             />
@@ -72,18 +53,24 @@ function Footer() {
           {/* Quick Links Section */}
           <div className="pl-0 md:pl-20 space-y-4">
             <h4 className="text-base sm:text-lg font-medium">Quick Links</h4>
-            <nav className="space-y-2">
-              {["About", "Contact", "Blog", "Trainings", "FAQ"].map((link) => (
-                <p
-                  key={link}
-                  className="text-sm sm:text-base hover:text-gray-200 cursor-pointer"
-                >
-                  {link}
-                </p>
-              ))}
-            </nav>
+            <ul className="space-y-2 flex flex-col">
+              <Link className="text-sm sm:text-base" to="/about">
+                <li>About</li>
+              </Link>
+              <Link className="text-sm sm:text-base" to="/contact">
+                <li>Contact</li>
+              </Link>
+              <Link className="text-sm sm:text-base" to={"/blog"}>
+                <li>Blog</li>
+              </Link>
+              <Link className="text-sm sm:text-base" to="/trainings">
+                <li>Trainings</li>
+              </Link>
+              <Link className="text-sm sm:text-base" to="faq">
+                <li>FAQ</li>
+              </Link>
+            </ul>
           </div>
-
           {/* Legal Section */}
           <div className="space-y-4">
             <h4 className="text-base sm:text-lg font-medium">Legal</h4>
@@ -100,7 +87,6 @@ function Footer() {
               )}
             </nav>
           </div>
-
           {/* Newsletter Section */}
           <div className="space-y-4">
             <h4 className="text-base sm:text-lg font-medium">

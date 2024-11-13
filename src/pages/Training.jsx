@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { LucideQuote } from "lucide-react";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/train1.jpeg";
@@ -6,11 +7,15 @@ import Button from "../Components/Button";
 import card1 from "../assets/cardBg1.jpeg";
 import card2 from "../assets/cardBg2.jpeg";
 import card3 from "../assets/cardBg3.jpeg";
-import WCU from "../assets/WCU_img.jpeg";
+import WCU from "../assets/Photo.png";
 import bkg from "../assets/back.jpeg";
-import bckdrp from "../assets/Rectangle 5806.png";
+
+import logo from "../assets/logo.png";
+import { MdOutlineClose } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
+
 import { IoSchoolOutline } from "react-icons/io5";
-import { PiChalkboardTeacherThin } from "react-icons/pi";
+import { PiChalkboardTeacher } from "react-icons/pi";
 import { GoBriefcase } from "react-icons/go";
 import { TbWorldDollar } from "react-icons/tb";
 import { Link } from "react-router-dom";
@@ -36,9 +41,27 @@ const data = [
 ];
 
 const Training = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-transparent">
-      <section className="relative w-full h-screen mt-[50px] md:mt-[100px] bg-transparent">
+      <section className="relative w-full h-screen mt-0 bg-transparent">
         <div
           className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
           style={{
@@ -46,10 +69,63 @@ const Training = () => {
           }}
         />
         <div className="relative z-10 bg-transparent">
-          <NavBar />
-          <div className="container flex flex-col justify-center items-start md:mt-[100px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
+          <NavBar
+            className={`w-full fixed top-0 left-0 z-50 ${
+              isScrolled
+                ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
+                : "bg-transparent"
+            } transition-colors duration-500`}
+          >
+            <div className="md:flex items-center justify-between py-4 px-7 z-50">
+              <div className="font-bold text-2xl cursor-pointer flex items-center">
+                <Link to="/">
+                  <img className="w-[150px]" src={logo} alt="Community logo" />
+                </Link>
+              </div>
+              <button
+                className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+                onClick={() => setIsMenuOpen((e) => !e)}
+              >
+                {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
+              </button>
+              <ul
+                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+                  isMenuOpen
+                    ? "top-0 opacity-100 pt-14"
+                    : "top-[-490px] text-white"
+                }`}
+              >
+                {/* Menu items */}
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/">Home</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/about">About</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/training">Trainings</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/events">Events</Link>
+                </li>
+                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
+                  <Link to="/blog">Blogs</Link>
+                </li>
+
+                <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
+                  <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                    Join Us
+                  </Button>
+                  <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                    Contact Us
+                  </Button>
+                </span>
+              </ul>
+            </div>
+          </NavBar>
+          <div className="container flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+              className="text-3xl md:text-4xl text-white"
               data-testid="hero-heading"
             >
               Unlock Your Career Potential With Fitech
@@ -115,13 +191,28 @@ const Training = () => {
           </div>
         </section>
         <section className="my-20 w-full">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-10">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-20">
             <div className="relative w-full mb-8 md:mb-0">
               <img
                 className="w-full md:w-[448px] h-[536px] rounded-tr-[40px] rounded-bl-[40px] object-cover"
                 src={WCU}
                 alt="Fitech alumni"
               />
+              <div className="absolute -bottom-5 right-0 md:-right-20 w-[200px] h-auto flex items-center justify-center rounded-2xl bg-white shadow-lg p-5">
+                <LucideQuote className="absolute text-[#FF6F00] w-8 h-9 top-2 left-1" />
+                <blockquote className="relative">
+                  <p className="text-[10px] my-7 leading-4">
+                    Fitech coding bootcamp was a game-changer for me. The
+                    curriculum was comprehensive, and the instructors were
+                    incredibly supportive. The hands-on projects and career
+                    support helped me land my first job in tech. Highly
+                    recommend!
+                  </p>
+                  <h4 className="text-sm font-semibold text-[#FF6F00]">
+                    - Tali Moses
+                  </h4>
+                </blockquote>
+              </div>
             </div>
             <div className="w-full px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
@@ -134,7 +225,7 @@ const Training = () => {
                 </li>
                 <li className="flex items-start gap-3 py-3">
                   <span className="text-[#FF6F00] inline-block mr-2">
-                    <PiChalkboardTeacherThin />
+                    <PiChalkboardTeacher />
                   </span>
                   Hands-On Learning through real-world projects and challenges
                 </li>
