@@ -57,7 +57,7 @@ function About() {
 
             <motion.div
               {...slideIn}
-              className="relative z-10 w-full p-6 lg:pl-24"
+              className="relative z-10 w-full pr-6 pt-6 pb-6 "
             >
               <motion.h1
                 {...fadeInUp}
@@ -76,7 +76,7 @@ function About() {
                 your ideas to life.
               </motion.p>
               <motion.div {...fadeInUp}>
-                <Button className="bg-[#1E90FF] px-7 py-2 rounded hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
+                <Button className="bg-[#1E90FF] px-7 py-2 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
                   Join the Community
                 </Button>
               </motion.div>
@@ -173,7 +173,7 @@ function About() {
         </section>
 
         {/* Our Community Impact Section */}
-        <section className="relative container mx-auto py-6 overflow-hidden mt-10 mb-5">
+        <section className="relative container mx-auto py-6 overflow-hidden mt-10 mb-5 ">
           <div className="absolute inset-0">
             <motion.img
               {...fadeIn}
@@ -190,7 +190,7 @@ function About() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <motion.div
               {...slideIn}
-              className="w-full p-6 lg:pl-24 lg:border-l-2 border-gray-400"
+              className="w-full p-6  lg:pl-20 lg:border-l-2 border-gray-400"
             >
               <motion.h2
                 {...fadeInUp}

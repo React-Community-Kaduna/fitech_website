@@ -8,6 +8,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa";
 
+
 let Links = [
   {
     name: "Home",
@@ -33,7 +34,7 @@ function Footer() {
       <div className="w-full p-5 md:w-[95%] mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-white">
           {/* Logo and About Section */}
-          <div className="space-y-4">
+          <div className="">
             <img
               className="w-[100px] h-auto"
               src={footer_logo}
