@@ -121,9 +121,11 @@ function Blog() {
                 </li>
 
                 <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-                  <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                    Join Us
-                  </Button>
+                  <a href="https://discord.gg/9REgpp5r">
+                    <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                      Join Us
+                    </Button>
+                  </a>
                   <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                     Contact Us
                   </Button>

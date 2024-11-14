@@ -85,9 +85,11 @@ function About() {
             </li>
 
             <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-              <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                Join Us
-              </Button>
+              <a href="https://discord.gg/9REgpp5r">
+                <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                  Join Us
+                </Button>
+              </a>
               <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                 Contact Us
               </Button>
@@ -97,7 +99,7 @@ function About() {
       </NavBar>
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px]">
         {/* Hero Section */}
-        <section className="w-full relative container mx-auto py-6 overflow-hidden">
+        <section className="container mx-auto py-8 md:py-10 lg:py-12">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="absolute inset-0">
               <img

@@ -6,6 +6,24 @@ import Button from "../Components/Button";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { AiOutlineBlock } from "react-icons/ai";
+import { CiCloudOn } from "react-icons/ci";
+import { DiIllustrator } from "react-icons/di";
+import { IoGlobeOutline } from "react-icons/io5";
+import bkg from "../assets/back.jpeg";
+
+function Card({ tag, img, title, description }) {
+  return (
+    <div className="md:w-[411px] w-full flex flex-col items-center justify-center gap-4 p-4">
+      <div className="w-full h-[60%] flex items-center justify-center">
+        <img src={img.bkg} alt="" />
+      </div>
+      <span></span>
+      <h3 className="text-xl font-semibold"></h3>
+      <p className="text-center"></p>
+    </div>
+  );
+}
 
 function Events() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,9 +66,11 @@ function Events() {
             </li>
 
             <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-              <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                Join Us
-              </Button>
+              <a href="https://discord.gg/9REgpp5r">
+                <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                  Join Us
+                </Button>
+              </a>
               <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                 Contact Us
               </Button>
@@ -58,10 +78,52 @@ function Events() {
           </ul>
         </div>
       </NavBar>
-      <div className="w-full h-[300px] mt-[200px] flex flex-col justify-center items-center text-4xl text-green-700">
-        <h1>Coming soon</h1>
-        <p>Our developers are working on it</p>
-      </div>
+      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">
+        <div className="w-full flex flex-col">
+          <h3>Discover Topics</h3>
+          <p className="my-5">
+            Discover hot topics, discussions, webinars and more
+          </p>
+          <div className="flex gap-3">
+            <Button className="w-[80px] h-[60px] p-3 bg-[#1E90FF] text-white rounded-lg text-[10px] flex flex-col items-center justify-center">
+              <span className="text-[22px]">
+                <AiOutlineBlock />
+              </span>
+              All Topics
+            </Button>
+            <Button className="w-[80px] h-[60px] p-3  border-2 border-gray-400 rounded-lg text-[10px] flex flex-col items-center justify-center">
+              <span className="text-[22px]">
+                <AiOutlineBlock />
+              </span>
+              Blochchain
+            </Button>
+            <Button className="w-[80px] h-[60px] p-3 leading-3  border-2 border-gray-400 rounded-lg text-[10px] flex flex-col items-center justify-center">
+              <span className="mb-1 text-[22px]">
+                <IoGlobeOutline />
+              </span>
+              Web Development
+            </Button>
+            <Button className="w-[80px] h-[60px] p-3 leading-3  border-2 border-gray-400 rounded-lg text-[10px] flex flex-col items-center justify-center">
+              <span className="mb-1 text-[22px]">
+                <DiIllustrator />
+              </span>
+              Data Science
+            </Button>
+            <Button className="w-[80px] h-[60px] p-3 leading-3 border-2 border-gray-400 rounded-lg text-[10px] flex flex-col items-center justify-center">
+              <span className="mb-1 text-[22px]">
+                <CiCloudOn />
+              </span>
+              Cloud Computing
+            </Button>
+          </div>
+        </div>
+        <section className="w-full mt-10">
+          <h3>Upcoming Events</h3>
+          <div>
+            <Card />
+          </div>
+        </section>
+      </main>
       <Footer />
     </div>
   );
