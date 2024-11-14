@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Training from "./pages/Training";
 import Registration from "./pages/Registration";
+import AdminDashboard from "./pages/adminDashboard";
 import Events from "./pages/Events";
 import Blog from "./pages/Blog/";
 import NotFound from "./pages/NotFound";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AdminSignIn from "./pages/admin";
 
 const router = createBrowserRouter([
   {
@@ -34,9 +37,19 @@ const router = createBrowserRouter([
     element: <Blog />,
   },
   {
+    path:'/admin',
+    element: <AdminSignIn />
+  },
+  {
+    path:"/adminDashboard",
+    element:<AdminDashboard />
+  },
+  {
     path: "*",
     element: <NotFound />,
   },
+  
+  
 ]);
 
 function App() {

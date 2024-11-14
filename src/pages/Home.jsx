@@ -281,7 +281,7 @@ function Home() {
                 Our expert-led workshops and hands-on sessions will help you
                 grow your expertise and advance your career.
               </p>
-              <Link to="/training">
+              <Link to="/registration">
                 <Button className="bg-[#1E90FF]  hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
                   Register Now
                 </Button>

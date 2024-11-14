@@ -107,7 +107,10 @@ function About() {
               />
             </div>
 
-            <motion.div {...slideIn} className="relative z-10 w-full p-6">
+            <motion.div
+              {...slideIn}
+              className="relative z-10 w-full pr-6 pt-6 pb-6 "
+            >
               <motion.h1
                 {...fadeInUp}
                 className="text-3xl md:text-4xl text-gray-900 mb-4 sm:mb-6 mt-5 sm:-mt-0"
