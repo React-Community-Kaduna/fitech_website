@@ -9,7 +9,7 @@ import cardImg6 from "../assets/ebube.png";
 import cardImg7 from "../assets/victor.png";
 import cardImg8 from "../assets/love.png";
 
-let data = [
+const data = [
   {
     name: "Faith M. Roberts",
     description: "Founder and Community Lead",
@@ -85,7 +85,7 @@ function Members() {
   }, []);
 
   return (
-    <section className="bg-[#e5e5e5]">
+    <section className="w-full bg-[#e5e5e5] relative">
       <div className="absolute inset-0">
         <img
           src={bg}
@@ -110,13 +110,13 @@ function Members() {
       </div>
 
       {/* teams section */}
-      <div className="container mx-auto pt-[3.5rem] bg-[#e5e5e5] relative z-1000">
-        <div className="flex flex-wrap justify-center gap-6 p-3">
+      <div className="w-full pt-[3.5rem] bg-[#e5e5e5] z-1000">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-3">
           {data.map((member, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="w-full md:w-[300px] h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-700"
+              className="w-full h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-700 opacity-0"
               style={{
                 border: "2px solid rgba(255, 207, 170, 1)",
               }}
@@ -126,7 +126,7 @@ function Members() {
                 alt={member.name}
                 className="h-[319px] w-full object-cover rounded-lg"
               />
-              <div className="">
+              <div className="flex-grow flex flex-col justify-end">
                 <h2 className="text-[20px]">{member.name}</h2>
                 <p className="text-gray-500 -mt-3 text-[14px]">
                   {member.description}

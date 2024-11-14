@@ -95,10 +95,10 @@ function About() {
           </ul>
         </div>
       </NavBar>
-      <main className="flex-1 w-full mt-10 md:mt-[150px] overflow-x-hidden">
+      <main className="w-full mt-10 md:mt-[150px] overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative container mx-auto py-6 overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <section className="w-full relative container mx-auto py-6 overflow-hidden">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="absolute inset-0">
               <img
                 src={bg}
@@ -107,10 +107,7 @@ function About() {
               />
             </div>
 
-            <motion.div
-              {...slideIn}
-              className="relative z-10 w-full pr-6 pt-6 pb-6 "
-            >
+            <motion.div {...slideIn} className="relative z-10 w-full p-6">
               <motion.h1
                 {...fadeInUp}
                 className="text-3xl md:text-4xl text-gray-900 mb-4 sm:mb-6 mt-5 sm:-mt-0"
@@ -274,8 +271,8 @@ function About() {
 
         {/* Meet Our Team Section */}
         <motion.section
+          className="bg-[#e5e5e5] w-full overflow-hidden mt-10 mb-5"
           {...fadeIn}
-          className="bg-[#e5e5e5] relative mx-auto py-6 overflow-hidden mt-10 mb-5"
         >
           <Members />
         </motion.section>
