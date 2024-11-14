@@ -191,17 +191,17 @@ const Training = () => {
           </div>
         </section>
         <section className="my-20 w-full">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-20">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-32">
             <div className="relative w-full mb-8 md:mb-0">
               <img
                 className="w-full md:w-[448px] h-[536px] rounded-tr-[40px] rounded-bl-[40px] object-cover"
                 src={WCU}
                 alt="Fitech alumni"
               />
-              <div className="absolute -bottom-5 right-0 md:-right-20 w-[200px] h-auto flex items-center justify-center rounded-2xl bg-white shadow-lg p-5">
+              <div className="absolute -bottom-2 -right-16 md:-right-20 w-[250px] h-auto flex items-center justify-center rounded-2xl bg-white shadow-lg p-5">
                 <LucideQuote className="absolute text-[#FF6F00] w-8 h-9 top-2 left-1" />
                 <blockquote className="relative">
-                  <p className="text-[10px] my-7 leading-4">
+                  <p className="text-[14px] my-7 leading-4">
                     Fitech coding bootcamp was a game-changer for me. The
                     curriculum was comprehensive, and the instructors were
                     incredibly supportive. The hands-on projects and career

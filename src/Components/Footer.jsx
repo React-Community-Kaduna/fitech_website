@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="w-full bg-[#1978D4] border border-gray-200 pt-5 mt-10 relative">
+    <footer className="w-full bg-[#1978D4] py-[16] border border-gray-200 pt-5 mt-10 relative">
       <div className="w-full p-5 md:w-[95%] mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-white">
           {/* Logo and About Section */}
