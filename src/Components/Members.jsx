@@ -110,13 +110,13 @@ function Members() {
       </div>
 
       {/* teams section */}
-      <div className="w-full pt-[3.5rem] bg-[#e5e5e5] z-1000">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-3">
+      <div className="w-full bg-[#e5e5e5] z-1000">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-3">
           {data.map((member, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="w-full h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-700 opacity-0"
+              className="w-full h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-500 opacity-0"
               style={{
                 border: "2px solid rgba(255, 207, 170, 1)",
               }}

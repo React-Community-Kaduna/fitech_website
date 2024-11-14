@@ -95,7 +95,7 @@ function About() {
           </ul>
         </div>
       </NavBar>
-      <main className="w-full mt-10 md:mt-[150px] overflow-x-hidden">
+      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px]">
         {/* Hero Section */}
         <section className="w-full relative container mx-auto py-6 overflow-hidden">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -222,61 +222,60 @@ function About() {
             </motion.div>
           </div>
         </section>
-
-        {/* Our Community Impact Section */}
-        <section className="relative container mx-auto py-6 overflow-hidden mt-10 mb-5 ">
-          <div className="absolute inset-0">
-            <motion.img
-              {...fadeIn}
-              src={bg1}
-              alt="Community Impact"
-              className="w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{ backgroundColor: "rgba(30, 144, 255, 0.9)" }}
-            ></div>
-          </div>
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <motion.div
-              {...slideIn}
-              className="w-full p-6  lg:pl-20 lg:border-l-2 border-gray-400"
-            >
-              <motion.h2
-                {...fadeInUp}
-                className="text-2xl md:text-4xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
-              >
-                Community Impact
-              </motion.h2>
-              <motion.p
-                {...fadeInUp}
-                className="mt-4 text-base lg:text-lg text-white mb-10 max-w-xl"
-              >
-                Our community has influenced countless lives globally, driving
-                innovation and growth
-              </motion.p>
-              <motion.div {...fadeInUp}>
-                <Button className="bg-white border-2 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
-                  Become a Sponsor
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            <motion.div {...fadeInUp}>
-              <img src={frame} alt="frame" />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Meet Our Team Section */}
-        <motion.section
-          className="bg-[#e5e5e5] w-full overflow-hidden mt-10 mb-5"
-          {...fadeIn}
-        >
-          <Members />
-        </motion.section>
       </main>
+      {/* Our Community Impact Section */}
+      <section className="relative w-full py-6 overflow-hidden mt-10 mb-5 ">
+        <div className="w-full absolute inset-0">
+          <motion.img
+            {...fadeIn}
+            src={bg1}
+            alt="Community Impact"
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: "rgba(30, 144, 255, 0.9)" }}
+          ></div>
+        </div>
+
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <motion.div
+            {...slideIn}
+            className="w-full p-6  lg:pl-20 lg:border-l-2 border-gray-400"
+          >
+            <motion.h2
+              {...fadeInUp}
+              className="text-2xl md:text-4xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
+            >
+              Community Impact
+            </motion.h2>
+            <motion.p
+              {...fadeInUp}
+              className="mt-4 text-base lg:text-lg text-white mb-10 max-w-xl"
+            >
+              Our community has influenced countless lives globally, driving
+              innovation and growth
+            </motion.p>
+            <motion.div {...fadeInUp}>
+              <Button className="bg-white border-2 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
+                Become a Sponsor
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div {...fadeInUp}>
+            <img src={frame} alt="frame" />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Meet Our Team Section */}
+      <motion.section
+        className="bg-[#e5e5e5] w-full px-16 overflow-hidden mt-10 mb-5"
+        {...fadeIn}
+      >
+        <Members />
+      </motion.section>
       <Footer />
     </div>
   );
