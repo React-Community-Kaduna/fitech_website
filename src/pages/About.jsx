@@ -272,7 +272,7 @@ function About() {
         {/* Meet Our Team Section */}
         <motion.section
           {...fadeIn}
-          className="bg-[#e5e5e5] relative container mx-auto py-6 overflow-hidden mt-10 mb-5"
+          className="bg-[#e5e5e5] relative mx-auto py-6 overflow-hidden mt-10 mb-5"
         >
           <Members />
         </motion.section>

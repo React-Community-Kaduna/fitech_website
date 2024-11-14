@@ -345,7 +345,7 @@ function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: false }}
-                className="text-white font-bold py-16 md:bg-none px-4 md:p-8 lg:p-12 w-full absolute z-30"
+                className="text-white font-bold py-16 md:bg-none px-4 md:p-8 lg:p-12 w-full  md:w-[700px] absolute z-30"
               >
                 <h3 className="text-xl md:text-2xl font-bold text-white">
                   Join Our Community
