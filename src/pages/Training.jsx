@@ -123,17 +123,18 @@ const Training = () => {
               </ul>
             </div>
           </NavBar>
-          <div className="container flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
+          <div className="md:ml-16 flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
             <h1
-              className="text-3xl md:text-4xl text-white"
+              className="text-3xl md:text-5xl text-white"
               data-testid="hero-heading"
             >
-              Unlock Your Career Potential With Fitech
+              Unlock Your Career <br />
+              Potential With <span className="text-[orangered]">Fitech</span>
             </h1>
             <p className="my-5">
               Unlock new opportunities with FiTech Tech Trainings. Whether
-              you're a beginner or an experienced professional, elevate your
-              skills and transform your career
+              you're <br /> a beginner or an experienced professional, elevate
+              your skills and <br /> transform your career
             </p>
             <div className="flex flex-col md:flex-row">
               <Link to="/registration">
@@ -141,9 +142,11 @@ const Training = () => {
                   Register Now
                 </Button>
               </Link>
-              {/* <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
+              {/* <Link to="/courses">
+              <Button className="bg-none px-5 py-3 border-3 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
                 Explore Courses
-              </Button> */}
+              </Button>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -198,7 +201,7 @@ const Training = () => {
                 src={WCU}
                 alt="Fitech alumni"
               />
-              <div className="absolute -bottom-2 -right-16 md:-right-20 w-[250px] h-auto flex items-center justify-center rounded-2xl bg-white shadow-lg p-5">
+              <div className="absolute -bottom-2 md:-right-20 w-[250px] h-auto flex items-center justify-center rounded-2xl bg-white shadow-lg p-5">
                 <LucideQuote className="absolute text-[#FF6F00] w-8 h-9 top-2 left-1" />
                 <blockquote className="relative">
                   <p className="text-[14px] my-7 leading-4">
@@ -249,7 +252,7 @@ const Training = () => {
         <section
           className="bg-[url('../assets/back.jpeg')] bg-cover bg-no-repeat w-full h-auto rounded-2xl"
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${bkg})`,
+            backgroundImage: `linear-gradient(to right, rgba(30,144,255, 0.3), rgba(30,144,255, 0.3)), url(${bkg})`,
           }}
         >
           <div className="w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">

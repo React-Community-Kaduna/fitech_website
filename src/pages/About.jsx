@@ -107,13 +107,10 @@ function About() {
               />
             </div>
 
-            <motion.div
-              {...slideIn}
-              className="relative z-10 w-full pr-6 pt-6 pb-6 "
-            >
+            <motion.div {...slideIn} className="relative z-10 w-full p-6">
               <motion.h1
                 {...fadeInUp}
-                className="text-2xl md:text-3xl text-gray-900 mb-4 sm:mb-6 mt-5 sm:-mt-0"
+                className="text-3xl md:text-4xl text-gray-900 mb-4 sm:mb-6 mt-5 sm:-mt-0"
               >
                 Uniting Innovators <br /> and Tech Enthusiasts
               </motion.h1>
@@ -149,7 +146,7 @@ function About() {
             >
               <motion.h2
                 {...fadeInUp}
-                className="text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
+                className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
               >
                 Our Journey
               </motion.h2>
@@ -166,10 +163,10 @@ function About() {
                 {...stagger}
                 className="flex flex-col sm:flex-row gap-5 mt-5"
               >
-                <Button className="bg-[#1E90FF] px-6 py-2 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
+                <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
                   Join us
                 </Button>
-                <Button className="bg-none border-2 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
+                <Button className="bg-none border-2 border-gray-600 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
                   Become a Sponsor
                 </Button>
               </motion.div>
@@ -196,7 +193,7 @@ function About() {
             >
               <motion.h3
                 {...fadeInUp}
-                className="text-xl md:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
+                className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
               >
                 Our Mission
               </motion.h3>
@@ -213,7 +210,7 @@ function About() {
                 className="flex flex-col sm:flex-row gap-5 mt-5"
               >
                 <Link to="/registration" className="w-full sm:w-auto">
-                  <Button className="bg-[#1E90FF] px-6 py-2 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
+                  <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
                     Join next Cohort
                   </Button>
                 </Link>
@@ -248,7 +245,7 @@ function About() {
             >
               <motion.h2
                 {...fadeInUp}
-                className="text-xl md:text-2xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
+                className="text-2xl md:text-4xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
               >
                 Community Impact
               </motion.h2>

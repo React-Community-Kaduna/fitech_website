@@ -125,7 +125,7 @@ function Home() {
               <h1 className="text-2xl md:text-3xl text-gray-900">
                 Empowering Tech Innovators Across Africa and Beyond
               </h1>
-              <div className="flex flex-wrap gap-3 md:gap-4">
+              <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-4">
                 <Link to="/registration">
                   <Button className="bg-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
                     Join next cohort
@@ -270,19 +270,19 @@ function Home() {
               whileInView="visible"
               viewport={{ once: false, margin: "-100px" }}
               variants={fadeUp}
-              className="h-auto relative space-y-4 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
+              className="flex flex-col justify-between items-start h-auto relative space-y-4 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
             >
               <h3 className="text-xl md:text-2xl font-bold text-gray-800">
                 Fast Track Your Tech Career
               </h3>
-              <p className="text-base md:text-lg mb-10">
+              <p className="text-base md:text-lg">
                 Be part of our comprehensive training program, designed to equip
                 you with the latest skills and knowledge in the tech industry.
                 Our expert-led workshops and hands-on sessions will help you
                 grow your expertise and advance your career.
               </p>
               <Link to="/training">
-                <Button className="bg-[#1E90FF] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
+                <Button className="bg-[#1E90FF]  hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
                   Register Now
                 </Button>
               </Link>
@@ -335,26 +335,26 @@ function Home() {
         >
           <div className="relative rounded-lg overflow-hidden">
             <img
-              className="w-full shadow- bg-[#6da0af]"
+              className="w-full z-10 shadow- bg-[rgb(109,160,175)]"
               src={blue_bg}
               alt="background"
             />
-            <div className="absolute inset-0 flex items-center">
+            <div className="w-full absolute inset-0 flex items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: false }}
-                className="text-white p-6 md:p-8 lg:p-12 w-full"
+                className="text-white font-bold py-16 md:bg-none px-4 md:p-8 lg:p-12 w-full absolute z-30"
               >
                 <h3 className="text-xl md:text-2xl font-bold text-white">
                   Join Our Community
                 </h3>
-                <p className="text-base md:text-lg lg:text-[22px] my-6 md:my-10">
+                <p className="text-base md:text-lg my-3 lg:text-[22px] md:my-10">
                   Join our tech community and unlock a world of support,
                   innovation, and growth
                 </p>
-                <Button className=" border-2 border-white hover:bg-gray-500 hover:text-white duration-500er-2 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
+                <Button className=" border-2 border-white hover:bg-gray-500 hover:text-white duration-500er-2 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
                   Join Us
                 </Button>
               </motion.div>

@@ -131,14 +131,14 @@ function Blog() {
               </ul>
             </div>
           </NavBar>
-          <div className="w-full md:w-[800px] h-screen mx-auto flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl md:text-4xl mb-4 text-white text-center">
+          <div className="w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8">
+            <h1 className="text-3xl md:text-5xl mb-4 text-white text-center">
               News, Articles and Insights on Tech{" "}
             </h1>
             <p>
               Subscribe now to receive the latest updates on cutting edge
-              applications, breakthrough technologies and the most important
-              news in the tech world
+              applications, breakthrough <br /> technologies and the most
+              important news in the tech world
             </p>
             <div className="w-full md:w-[500px] bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg">
               <input
@@ -197,7 +197,7 @@ function Blog() {
             {posts.map((post) => (
               <div
                 key={post.title}
-                className="rounded-t-lg overflow-hidden hover:shadow-xl transition-shadow"
+                className="rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-500"
               >
                 <img
                   src={post.image}

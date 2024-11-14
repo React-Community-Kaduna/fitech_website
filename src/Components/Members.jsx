@@ -94,28 +94,29 @@ function Members() {
         />
       </div>
       <div className="flex flex-col justify-center text-center">
-        <button
-          className="font-medium text-[18px] sm:text-[24px] md:text-[28px] lg:text-[26px] px-4 sm:px-6 md:px-8 lg:px-[20px] lg:py-[5px] rounded-full w-[90%] sm:w-[70%] md:w-[40%] lg:w-[18%] block mx-auto"
+        <div
+          className="w-auto font-medium text-[18px] sm:text-[24px] md:text-[28px] lg:text-[26px] sm:px-6 md:px-8 lg:px-[20px] lg:py-[5px] rounded-full block mx-auto"
           style={{
             border: "1px solid rgba(255, 135, 43, 1)",
             color: "rgba(30, 144, 255, 1)",
+            padding: "10px 20px",
           }}
         >
           Meet Our Team
-        </button>
-        <p className="font-[700] text-[16px] mt-5 ">
+        </div>
+        <p className="font-[700] text-[16px] mt-5 px-2">
           Meet the passionate professionals driving our success and innovation
         </p>
       </div>
 
       {/* teams section */}
       <div className="container mx-auto pt-[3.5rem] bg-[#e5e5e5] relative z-1000">
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 p-3">
           {data.map((member, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="w-[302px] md:w-[300px] h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col opacity-0 translate-y-10 transition-all duration-700"
+              className="w-full md:w-[300px] h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-700"
               style={{
                 border: "2px solid rgba(255, 207, 170, 1)",
               }}
@@ -123,12 +124,14 @@ function Members() {
               <img
                 src={member.img}
                 alt={member.name}
-                className="h-[319px] w-[282px] object-cover mb-1"
+                className="h-[319px] w-full object-cover rounded-lg"
               />
-              <h2 className="font-[500] text-[20px]">{member.name}</h2>
-              <p className="text-gray-500 font-[400] text-[14px]">
-                {member.description}
-              </p>
+              <div className="">
+                <h2 className="text-[20px]">{member.name}</h2>
+                <p className="text-gray-500 -mt-3 text-[14px]">
+                  {member.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
