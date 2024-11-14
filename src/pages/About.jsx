@@ -271,7 +271,7 @@ function About() {
 
       {/* Meet Our Team Section */}
       <motion.section
-        className="bg-[#e5e5e5] w-full px-16 overflow-hidden mt-10 mb-5"
+        className="bg-[#e5e5e5] w-full md:px-16 overflow-hidden mt-10 mb-5"
         {...fadeIn}
       >
         <Members />
