@@ -172,6 +172,7 @@ const Training = () => {
             <div className="bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg">
               <input
                 className="w-full p-2 outline-none active:border-none text-gray-900"
+                // eslint-disable-next-line react/no-unknown-property
                 for="text"
                 placeholder="Your email"
               />

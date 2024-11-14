@@ -57,7 +57,7 @@ function About() {
 
             <motion.div
               {...slideIn}
-              className="relative z-10 w-full pr-6 pt-6 pb-6 "
+              className="relative z-10 w-full pr-6 pt-6 pb-6 pl-9  lg:pl-24 "
             >
               <motion.h2
                 {...fadeInUp}
