@@ -100,14 +100,16 @@ function Home() {
             </li>
 
             <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-            <a href="https://discord.gg/9REgpp5r">
+              <a href="https://discord.gg/9REgpp5r">
                 <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
                   Join Us
                 </Button>
               </a>
-              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                Contact Us
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                  Contact Us
+                </Button>
+              </Link>
             </span>
           </ul>
         </div>
@@ -356,9 +358,11 @@ function Home() {
                   Join our tech community and unlock a world of support,
                   innovation, and growth
                 </p>
-                <Button className=" border-2 border-white hover:bg-gray-500 hover:text-white duration-500er-2 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
-                  Join Us
-                </Button>
+                <a href="https://discord.gg/9REgpp5r">
+                  <Button className=" border-2 border-white hover:bg-gray-500 hover:text-white duration-500er-2 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
+                    Join Us
+                  </Button>
+                </a>
               </motion.div>
               <motion.img
                 initial={{ opacity: 0, x: 50 }}

@@ -116,7 +116,7 @@ function Members() {
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="w-full h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-500 opacity-0"
+              className="w-full h-[450px] md:h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-500 opacity-0"
               style={{
                 border: "2px solid rgba(255, 207, 170, 1)",
               }}
@@ -124,7 +124,7 @@ function Members() {
               <img
                 src={member.img}
                 alt={member.name}
-                className="h-[319px] w-full object-cover rounded-lg"
+                className="h-[350px] md:h-[319px] w-full object-cover rounded-lg"
               />
               <div className="flex-grow flex flex-col justify-end">
                 <h2 className="text-[20px]">{member.name}</h2>

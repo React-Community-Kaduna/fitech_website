@@ -20,6 +20,34 @@ import { GoBriefcase } from "react-icons/go";
 import { TbWorldDollar } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
+// Add AnimatedSection component
+const AnimatedSection = ({ children, className = "" }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = React.useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => setIsVisible(entry.isIntersecting));
+    });
+
+    const { current } = domRef;
+    observer.observe(current);
+
+    return () => observer.unobserve(current);
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      className={`transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 const data = [
   {
     course: "Web Developer Bootcamp",
@@ -113,19 +141,21 @@ const Training = () => {
                 </li>
 
                 <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-                <a href="https://discord.gg/9REgpp5r">
-                <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                  Join Us
-                </Button>
-              </a>
-                  <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                    Contact Us
-                  </Button>
+                  <a href="https://discord.gg/9REgpp5r">
+                    <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                      Join Us
+                    </Button>
+                  </a>
+                  <Link to="/contact">
+                    <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                      Contact Us
+                    </Button>
+                  </Link>
                 </span>
               </ul>
             </div>
           </NavBar>
-          <div className="md:ml-16 flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
+          <AnimatedSection className="md:ml-16 flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
             <h1
               className="text-3xl md:text-5xl text-white"
               data-testid="hero-heading"
@@ -144,27 +174,23 @@ const Training = () => {
                   Register Now
                 </Button>
               </Link>
-              {/* <Link to="/courses">
-              <Button className="bg-none px-5 py-3 border-3 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
-                Explore Courses
-              </Button>
-              </Link> */}
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section className="text-center">
+        <AnimatedSection className="text-center">
           <h3 className="text-xl md:text-2xl font-bold text-gray-800tld mb-4">
             Choose the Perfect Course for Your Career
           </h3>
           <p>Find the Ideal course to move your career forward</p>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-10 mt-8">
             {data.map((item, index) => (
-              <div
+              <AnimatedSection
                 key={index}
                 className="w-full md:w-[400px] h-[500px] bg-white rounded-lg shadow-lg relative overflow-hidden"
+                style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <img
                   src={item.bgImg}
@@ -191,13 +217,13 @@ const Training = () => {
                     </Button>
                   </Link>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
         <section className="my-20 w-full">
           <div className="flex flex-col md:flex-row justify-center items-center gap-32">
-            <div className="relative w-full mb-8 md:mb-0">
+            <AnimatedSection className="relative w-full mb-8 md:mb-0">
               <img
                 className="w-full md:w-[448px] h-[536px] rounded-tr-[40px] rounded-bl-[40px] object-cover"
                 src={WCU}
@@ -218,8 +244,8 @@ const Training = () => {
                   </h4>
                 </blockquote>
               </div>
-            </div>
-            <div className="w-full px-4 sm:px-6 lg:px-8">
+            </AnimatedSection>
+            <AnimatedSection className="w-full px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
               <ul>
                 <li className="flex items-start gap-3 py-3">
@@ -248,7 +274,7 @@ const Training = () => {
                   Networking opportunities and Mentorship
                 </li>
               </ul>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
         <section

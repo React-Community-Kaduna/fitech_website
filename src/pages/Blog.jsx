@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/blogBg.jpeg";
@@ -8,7 +9,6 @@ import card2 from "../assets/cardBg2.jpeg";
 import card3 from "../assets/cardBg3.jpeg";
 import BSBG from "../assets/blogsecBg.jpeg";
 import AIBG from "../assets/aiBg.jpeg";
-
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -47,6 +47,25 @@ const posts = [
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 function Blog() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,7 +90,7 @@ function Blog() {
       {/* Hero Section */}
       <section className="relative w-full h-screen mt-0 bg-transparent">
         <div
-          className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
+          className="height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url(${bgImg})`,
           }}
@@ -84,6 +103,7 @@ function Blog() {
                 : "bg-transparent"
             } transition-colors duration-500`}
           >
+            {/* NavBar content remains the same */}
             <div className="md:flex items-center justify-between py-4 px-7 z-50">
               <div className="font-bold text-2xl cursor-pointer flex items-center">
                 <Link to="/">
@@ -103,7 +123,7 @@ function Blog() {
                     : "top-[-490px] text-white"
                 }`}
               >
-                {/* Menu items */}
+                {/* Menu items remain the same */}
                 <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
                   <Link to="/">Home</Link>
                 </li>
@@ -126,49 +146,73 @@ function Blog() {
                       Join Us
                     </Button>
                   </a>
-                  <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                    Contact Us
-                  </Button>
+                  <Link to="/contact">
+                    <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                      Contact Us
+                    </Button>
+                  </Link>
                 </span>
               </ul>
             </div>
           </NavBar>
-          <div className="w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            className="w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8"
+          >
             <h1 className="text-3xl md:text-5xl mb-4 text-white text-center">
-              News, Articles and Insights on Tech{" "}
+              News, Articles and Insights on Tech
             </h1>
             <p>
               Subscribe now to receive the latest updates on cutting edge
               applications, breakthrough <br /> technologies and the most
               important news in the tech world
             </p>
-            <div className="w-full md:w-[500px] bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="w-full md:w-[500px] bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg"
+            >
               <input
                 className="w-full p-2 outline-none active:border-none text-gray-900"
-                for="text"
+                type="text"
                 placeholder="Enter your email address"
               />
               <Button className="bg-[#1E90FF] rounded-lg p-2 hover:bg-gray-500 duration-500 text-[white]">
                 Subscribe
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       <main className="flex-1 container mx-auto px-4 py-12">
         {/* Featured Post Section */}
-        <section className="mb-16">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="mb-16"
+        >
           <h2 className="text-2xl md:text-3xl font-bold mb-8">Recent Posts</h2>
           <div className="relative w-full rounded-2xl overflow-hidden h-[400px] md:h-[500px]">
             <div
-              className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
+              className="height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
               style={{
                 backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url(${BSBG})`,
               }}
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <div className="w-full py-5 md:max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="absolute bottom-0 left-0 right-0 md:p-8 text-white"
+            >
+              <div className="bg-blue-800 bg-clip-padding backdrop-filter md:backdrop-blur-sm bg-opacity-10 w-full p-5">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                   The world of Tech and what the future holds
                 </h3>
@@ -188,18 +232,30 @@ function Blog() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* All Posts Grid */}
-        <section>
-          <h2 className="text-2xl md:text-3xl font-bold mb-8">All Posts</h2>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-2xl md:text-3xl font-bold mb-8"
+          >
+            All Posts
+          </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <div
+            {posts.map((post, index) => (
+              <motion.div
                 key={post.title}
+                variants={fadeInUp}
                 className="rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-500"
+                whileHover={{ y: -10 }}
               >
                 <img
                   src={post.image}
@@ -215,10 +271,10 @@ function Blog() {
                     {post.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <Footer />

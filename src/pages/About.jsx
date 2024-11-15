@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Nav from "../Components/Nav";
 
 function About() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,6 +50,7 @@ function About() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* <Nav /> */}
       <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
         <div className="md:flex items-center justify-between py-4 px-7 z-50">
           <div className="font-bold text-2xl cursor-pointer flex items-center">
@@ -90,9 +92,11 @@ function About() {
                   Join Us
                 </Button>
               </a>
-              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                Contact Us
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                  Contact Us
+                </Button>
+              </Link>
             </span>
           </ul>
         </div>

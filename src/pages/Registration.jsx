@@ -137,9 +137,11 @@ function Registration() {
                   Join Us
                 </Button>
               </a>
-              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                Contact Us
-              </Button>
+              <Link to="/contact">
+                <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                  Contact Us
+                </Button>
+              </Link>
             </span>
           </ul>
         </div>

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Training from "./pages/Training";
 import Registration from "./pages/Registration";
+import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/adminDashboard";
 import Events from "./pages/Events";
 import Blog from "./pages/Blog/";
@@ -37,19 +38,21 @@ const router = createBrowserRouter([
     element: <Blog />,
   },
   {
-    path:'/admin',
-    element: <AdminSignIn />
+    path: "/contact",
+    element: <Contact />,
   },
   {
-    path:"/adminDashboard",
-    element:<AdminDashboard />
+    path: "/admin",
+    element: <AdminSignIn />,
+  },
+  {
+    path: "/adminDashboard",
+    element: <AdminDashboard />,
   },
   {
     path: "*",
     element: <NotFound />,
   },
-  
-  
 ]);
 
 function App() {
