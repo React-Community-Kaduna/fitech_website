@@ -131,9 +131,11 @@ function About() {
                 your ideas to life.
               </motion.p>
               <motion.div {...fadeInUp}>
-                <Button className="bg-[#1E90FF] px-7 py-2 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
-                  Join the Community
-                </Button>
+                <a href="https://discord.gg/9REgpp5r">
+                  <Button className="bg-[#1E90FF] px-7 py-2 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
+                    Join the Community
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -169,9 +171,11 @@ function About() {
                 {...stagger}
                 className="flex flex-col sm:flex-row gap-5 mt-5"
               >
+                 <a href="https://discord.gg/9REgpp5r">
                 <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
                   Join us
                 </Button>
+                </a>
                 <Button className="bg-none border-2 border-gray-600 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
                   Become a Sponsor
                 </Button>
