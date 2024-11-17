@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
@@ -22,6 +22,14 @@ import card3 from "../assets/cardBg3.jpeg";
 import BSBG from "../assets/blogsecBg.jpeg";
 import AIBG from "../assets/unsplash.jpeg";
 import bkg from "../assets/back.jpeg";
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Training", href: "/training" },
+  { name: "Events", href: "/events" },
+  { name: "Blog", href: "/blog" },
+];
 
 // Animation variants
 const fadeInUp = {
@@ -101,29 +109,34 @@ const Events = () => {
           >
             {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
           </button>
-          <ul
-            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+          <div
+            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 gap-5 transition-all duration-500 ease-in ${
               isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-490px]"
             }`}
           >
             {/* Menu items */}
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/training">Trainings</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/events">Events</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/blog">Blogs</Link>
-            </li>
+            <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+              {navigation.map((item) => (
+                <li className="md:ml-8 text-xl md:my-0 my-7">
+                  <NavLink
+                    className={({ isActive }) => {
+                      return (
+                        "px-3 py-2 z-50 rounded-md duration-500" +
+                        (isActive
+                          ? "bg-gray-900 text-green-900 border-2 border-green-950"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                      );
+                    }}
+                    key={item.name}
+                    to={item.href}
+                  >
+                    {item.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-            <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
+            <span className="flex flex-col md:flex-row gap-5">
               <Link to="/registration">
                 <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
                   Register Now
@@ -135,7 +148,7 @@ const Events = () => {
                 </Button>
               </Link>
             </span>
-          </ul>
+          </div>
         </div>
       </NavBar>
 

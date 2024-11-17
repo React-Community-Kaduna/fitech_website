@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Button from "../Components/Button";
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
@@ -13,6 +13,14 @@ import { Toaster, toast } from "react-hot-toast";
 import { CiUser } from "react-icons/ci";
 import { MdOutlineEmail } from "react-icons/md";
 import { CiPhone } from "react-icons/ci";
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Training", href: "/training" },
+  { name: "Events", href: "/events" },
+  { name: "Blog", href: "/blog" },
+];
 
 function Registration() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -109,41 +117,46 @@ function Registration() {
           >
             {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
           </button>
-          <ul
-            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+          <div
+            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 gap-5 transition-all duration-500 ease-in ${
               isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-490px]"
             }`}
           >
             {/* Menu items */}
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/training">Trainings</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/events">Events</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/blog">Blogs</Link>
-            </li>
+            <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+              {navigation.map((item) => (
+                <li className="md:ml-8 text-xl md:my-0 my-7">
+                  <NavLink
+                    className={({ isActive }) => {
+                      return (
+                        "px-3 py-2 z-50 rounded-md duration-500" +
+                        (isActive
+                          ? "bg-gray-900 text-green-900 border-2 border-green-950"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                      );
+                    }}
+                    key={item.name}
+                    to={item.href}
+                  >
+                    {item.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-            <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-              <a href="https://discord.gg/9REgpp5r">
-                <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                  Join Us
+            <span className="flex flex-col md:flex-row gap-5">
+              <Link to="/registration">
+                <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                  Register Now
                 </Button>
-              </a>
+              </Link>
               <Link to="/contact">
                 <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                   Contact Us
                 </Button>
               </Link>
             </span>
-          </ul>
+          </div>
         </div>
       </NavBar>
 
