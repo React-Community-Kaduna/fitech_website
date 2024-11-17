@@ -111,7 +111,7 @@ const Events = () => {
           </button>
           <div
             className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 gap-5 transition-all duration-500 ease-in ${
-              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-490px]"
+              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-550px]"
             }`}
           >
             {/* Menu items */}
@@ -121,9 +121,9 @@ const Events = () => {
                   <NavLink
                     className={({ isActive }) => {
                       return (
-                        "px-3 py-2 z-50 rounded-md duration-500" +
+                        "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
                         (isActive
-                          ? "bg-gray-900 text-green-900 border-2 border-green-950"
+                          ? "text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
                           : "text-gray-300 hover:bg-gray-700 hover:text-white")
                       );
                     }}
@@ -138,12 +138,12 @@ const Events = () => {
 
             <span className="flex flex-col md:flex-row gap-5">
               <Link to="/registration">
-                <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
                   Register Now
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                   Contact Us
                 </Button>
               </Link>

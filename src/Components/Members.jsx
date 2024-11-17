@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 import bg from "../assets/hero_bg_about.png";
 import cardImg1 from "../assets/faith.png";
 import cardImg2 from "../assets/mayowa.png";
@@ -53,36 +54,27 @@ const data = [
 ];
 
 function Members() {
-  const cardRefs = useRef([]);
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-    };
-
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-in");
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      handleIntersection,
-      observerOptions
-    );
-
-    cardRefs.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
-    return () => {
-      cardRefs.current.forEach((card) => {
-        if (card) observer.unobserve(card);
-      });
-    };
-  }, []);
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 0.25, 0, 0.75],
+      },
+    },
+  };
 
   return (
     <section className="w-full bg-[#e5e5e5] relative">
@@ -94,7 +86,11 @@ function Members() {
         />
       </div>
       <div className="flex flex-col justify-center text-center">
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
           className="w-auto font-medium text-[18px] sm:text-[24px] md:text-[28px] lg:text-[26px] sm:px-6 md:px-8 lg:px-[20px] lg:py-[5px] rounded-full block mx-auto"
           style={{
             border: "1px solid rgba(255, 135, 43, 1)",
@@ -103,22 +99,38 @@ function Members() {
           }}
         >
           Meet Our Team
-        </div>
-        <p className="font-[700] text-[16px] mt-5 px-2">
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-[700] text-[16px] mt-5 px-2"
+        >
           Meet the passionate professionals driving our success and innovation
-        </p>
+        </motion.p>
       </div>
 
       {/* teams section */}
       <div className="w-full bg-[#e5e5e5] z-1000">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-3">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false }}
+          className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-3"
+        >
           {data.map((member, index) => (
-            <div
+            <motion.div
               key={index}
-              ref={(el) => (cardRefs.current[index] = el)}
-              className="w-full h-[450px] md:h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col translate-y-10 transition-all duration-500 opacity-0"
+              variants={item}
+              className="w-full h-[450px] md:h-[411px] p-3 shadow-lg bg-[#e5e5e5] rounded-lg flex flex-col"
               style={{
                 border: "2px solid rgba(255, 207, 170, 1)",
+              }}
+              whileHover={{
+                y: -5,
+                transition: { duration: 0.2 },
               }}
             >
               <img
@@ -132,17 +144,10 @@ function Members() {
                   {member.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-
-      <style>{`
-        .animate-in {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-      `}</style>
     </section>
   );
 }
