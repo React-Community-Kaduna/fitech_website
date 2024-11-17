@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LucideQuote } from "lucide-react";
 import NavBar from "../Components/NavBar";
+import SubscribeForm from "../Components/SubscribeForm";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/train1.jpeg";
 import Button from "../Components/Button";
@@ -141,11 +142,11 @@ const Training = () => {
                 </li>
 
                 <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-                  <a href="https://discord.gg/9REgpp5r">
-                    <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                      Join Us
+                  <Link to="/registration">
+                    <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                      Register Now
                     </Button>
-                  </a>
+                  </Link>
                   <Link to="/contact">
                     <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                       Contact Us
@@ -283,7 +284,7 @@ const Training = () => {
             backgroundImage: `linear-gradient(to right, rgba(30,144,255, 0.3), rgba(30,144,255, 0.3)), url(${bkg})`,
           }}
         >
-          <div className="w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">
             <h3 className="text-xl md:text-2xl font-bold mb-4 text-white text-center">
               Get Updates For Free
             </h3>
@@ -291,17 +292,7 @@ const Training = () => {
               Subscribe to our newsletter and never miss out on updates offers
               and expert insights
             </p>
-            <div className="bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg">
-              <input
-                className="w-full p-2 outline-none active:border-none text-gray-900"
-                // eslint-disable-next-line react/no-unknown-property
-                for="text"
-                placeholder="Your email"
-              />
-              <Button className="bg-[#1E90FF] rounded-lg p-2 hover:bg-gray-500 duration-500 text-[white]">
-                Subscribe
-              </Button>
-            </div>
+            <SubscribeForm />
           </div>
         </section>
       </main>

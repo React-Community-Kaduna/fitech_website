@@ -1,6 +1,7 @@
 import React from "react";
 import footerLogo from "../assets/footer_logo.png";
 import Button from "./Button";
+import SubscribeForm from "./SubscribeForm";
 import { FaTwitter, FaYoutube, FaDiscord } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -46,7 +47,7 @@ function Footer() {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-4">
+          <div className="md:px-6 space-y-4">
             <h4 className="text-base sm:text-lg font-medium">Quick Links</h4>
             <ul className="space-y-2">
               <li>
@@ -112,6 +113,7 @@ function Footer() {
                 Subscribe
               </Button>
             </div>
+            {/* <SubscribeForm /> */}
           </div>
         </div>
       </div>

@@ -87,11 +87,11 @@ function About() {
             </li>
 
             <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-              <a href="https://discord.gg/9REgpp5r">
-                <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                  Join Us
+              <Link to="/registration">
+                <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                  Register Now
                 </Button>
-              </a>
+              </Link>
               <Link to="/contact">
                 <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                   Contact Us
@@ -171,10 +171,10 @@ function About() {
                 {...stagger}
                 className="flex flex-col sm:flex-row gap-5 mt-5"
               >
-                 <a href="https://discord.gg/9REgpp5r">
-                <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
-                  Join us
-                </Button>
+                <a href="https://discord.gg/9REgpp5r">
+                  <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
+                    Join us
+                  </Button>
                 </a>
                 <Button className="bg-none border-2 border-gray-600 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
                   Become a Sponsor

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
+import SubscribeForm from "../Components/SubscribeForm";
 import bgImg from "../assets/blogBg.jpeg";
 import Button from "../Components/Button";
 import card1 from "../assets/cardBg1.jpeg";
@@ -103,7 +104,6 @@ function Blog() {
                 : "bg-transparent"
             } transition-colors duration-500`}
           >
-            {/* NavBar content remains the same */}
             <div className="md:flex items-center justify-between py-4 px-7 z-50">
               <div className="font-bold text-2xl cursor-pointer flex items-center">
                 <Link to="/">
@@ -123,7 +123,6 @@ function Blog() {
                     : "top-[-490px] text-white"
                 }`}
               >
-                {/* Menu items remain the same */}
                 <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
                   <Link to="/">Home</Link>
                 </li>
@@ -141,11 +140,11 @@ function Blog() {
                 </li>
 
                 <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-                  <a href="https://discord.gg/9REgpp5r">
-                    <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                      Join Us
+                  <Link to="/registration">
+                    <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                      Register Now
                     </Button>
-                  </a>
+                  </Link>
                   <Link to="/contact">
                     <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
                       Contact Us
@@ -173,16 +172,8 @@ function Blog() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="w-full md:w-[500px] bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg"
             >
-              <input
-                className="w-full p-2 outline-none active:border-none text-gray-900"
-                type="text"
-                placeholder="Enter your email address"
-              />
-              <Button className="bg-[#1E90FF] rounded-lg p-2 hover:bg-gray-500 duration-500 text-[white]">
-                Subscribe
-              </Button>
+              <SubscribeForm />
             </motion.div>
           </motion.div>
         </div>
@@ -212,13 +203,13 @@ function Blog() {
               viewport={{ once: true }}
               className="absolute bottom-0 left-0 right-0 md:p-8 text-white"
             >
-              <div className="bg-blue-800 bg-clip-padding backdrop-filter md:backdrop-blur-sm bg-opacity-10 w-full p-5">
+              <div className="bg-blue-800 bg-clip-padding backdrop-filter md:backdrop-blur-sm bg-opacity-10  w-full rounded-2xl p-5">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                   The world of Tech and what the future holds
                 </h3>
                 <p className="text-lg mb-6">
                   Artificial Intelligence (AI) is revolutionizing the world of
-                  coding, transforming how developers approach software
+                  coding, transforming how developers <br /> approach software
                   creation. With AI-powered tools, coding .....
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6">
