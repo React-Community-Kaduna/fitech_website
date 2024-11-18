@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import  { useEffect, useRef } from "react";
 import bg from "../assets/hero_bg_about.png";
 import cardImg1 from "../assets/faith.png";
 import cardImg2 from "../assets/mayowa.png";

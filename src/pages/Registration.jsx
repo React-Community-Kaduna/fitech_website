@@ -1,5 +1,8 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
+// // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import { Country, State } from "country-state-city";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import { NavLink, Link } from "react-router-dom";
@@ -25,6 +28,29 @@ const navigation = [
 function Registration() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [isStateDisabled, setIsStateDisabled] = useState(true);
+
+  const [formData, setFormData] = useState({
+    track: "",
+    email: "",
+    fullname: "",
+    phone: "",
+    gender: "",
+    country: "",
+    state: "",
+    experience: "",
+    commitment: "",
+    access: "",
+    preferredDay: "",
+    preferredTime: "",
+    comment: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const maxLength = 300;
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -40,24 +66,17 @@ function Registration() {
     };
   }, []);
 
-  const [formData, setFormData] = useState({
-    track: "",
-    email: "",
-    fullname: "",
-    phone: "",
-    gender: "",
-    country: "",
-    state: "",
-    experience: "",
-    commitment: "",
-    access: "",
-    preferredTime: "",
-    comment: "",
-  });
-  const maxLength = 100;
+  useEffect(() => {
+    // Get countries on mount
+    const countryOptions = Country.getAllCountries().map((country) => ({
+      value: country.isoCode,
+      label: country.name,
+    }));
+    setCountries(countryOptions);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const maxLength = 100;
 
     // Check if the length of the value is within the character limit
     if (value.length <= maxLength) {
@@ -65,20 +84,62 @@ function Registration() {
     }
   };
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
+  const handleCountryChange = (selectedCountry) => {
+    setFormData({ ...formData, country: selectedCountry.label });
+    setIsStateDisabled(false); // Enable state dropdown once a country is selected
+
+    // Fetch states for the selected country
+    const stateOptions = State.getStatesOfCountry(selectedCountry.value).map(
+      (state) => ({
+        value: state.isoCode,
+        label: state.name,
+      })
+    );
+    setStates(stateOptions);
+  };
+
+  const handleStateChange = (selectedState) => {
+    setFormData({ ...formData, state: selectedState.label });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.track) newErrors.track = "Track is required.";
+    if (!formData.email) newErrors.email = "Email is required.";
+    if (!formData.fullname) newErrors.fullname = "Full name is required.";
+    if (!formData.phone) newErrors.phone = "Phone number is required.";
+    if (!formData.gender) newErrors.gender = "Gender is required.";
+    if (!formData.country) newErrors.country = "Country is required.";
+    if (!formData.state) newErrors.state = "State is required.";
+    if (!formData.experience)
+      newErrors.experience = "Experience level is required.";
+    return newErrors;
+  };
+
+  
+// handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+  
+    // Show loading toast
+    const loadingToast = toast.loading("Submitting your form...");
+  
     try {
       const response = await axios.post(
         import.meta.env.VITE_SERVER_DOMAIN + "/api/register",
         formData
       );
-
-      // Display success toast and reset the form
+  
+      // Dismiss the loading toast and show success toast
+      toast.dismiss(loadingToast);
       toast.success(response.data.message);
+  
+      // Reset form data and errors
       setFormData({
         track: "",
         email: "",
@@ -90,14 +151,18 @@ function Registration() {
         experience: "",
         commitment: "",
         access: "",
+        preferredDay: "",
         preferredTime: "",
         comment: "",
       });
+      setErrors({});
     } catch (error) {
-      // Display error toast
+      // Dismiss the loading toast and show error toast
+      toast.dismiss(loadingToast);
       toast.error(error.response?.data?.error || "An error occurred");
     }
   };
+  
   return (
     <div className="min-h-screen flex flex-col">
       <NavBar
@@ -176,7 +241,7 @@ function Registration() {
             </h2>
           </div>
         </section>
-        <section className="mt-20 flex flex-col justify-center overflow-hidden  ">
+        <section className=" flex flex-col justify-center overflow-hidden  ">
           {/* Registration Form */}
           <div
             className=""
@@ -188,11 +253,19 @@ function Registration() {
           >
             <Toaster />
             <form
-              className="p-6 rounded-lg shadow-lg w-full  md:max-w-[70%] mx-auto"
+              className="p-6 rounded-lg shadow-lg w-full mt-10  md:max-w-[70%] mx-auto"
               onSubmit={handleSubmit}
               style={{ backgroundColor: "rgba(250, 250, 250, 1)" }}
             >
-              <h2 className="text-[28px] font-[700]  ">Personal Information</h2>
+              <h2 className=" sm:text-left text-[28px] font-[700]  ">
+                Personal Information{" "}
+                <span
+                  className=" pl-1 text-[28px] font-[700]"
+                  style={{ color: "rgba(255, 135, 43, 1)" }}
+                >
+                  1 of 2
+                </span>
+              </h2>
               <p className="text-[14px] font-[400] mb-6">
                 Fill out your personal information carefully for registration
               </p>
@@ -226,7 +299,7 @@ function Registration() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className=" "
+                  className=" w-full "
                   placeholder="user@example.com"
                   required
                 />
@@ -246,7 +319,7 @@ function Registration() {
                   name="fullname"
                   value={formData.fullname}
                   onChange={handleChange}
-                  className=""
+                  className="w-full "
                   placeholder="Your name here"
                   required
                 />
@@ -258,15 +331,15 @@ function Registration() {
               </label>
 
               <div className="flex flex-row gap-2 items-center bg-white w-full p-2 mb-4 border rounded-lg text-[13px]">
-                <spam className="text-[17px]">
+                <span className="text-[17px]">
                   <CiPhone />
-                </spam>
+                </span>
                 <input
                   type="text"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className=""
+                  className="w-full "
                   placeholder="Input phone number"
                   required
                 />
@@ -287,33 +360,44 @@ function Registration() {
                 <option value="Female">Female</option>
               </select>
 
-              {/* Country of Residence Input */}
               <label className="block mb-2 font-[400] text-[13px] pl-2">
                 Country of Residence
               </label>
-              <input
-                type="text"
+              <Select
+                className="text-[13px] mb-4"
+                options={countries}
+                onChange={handleCountryChange}
                 name="country"
-                value={formData.country}
-                onChange={handleChange}
-                className="w-full p-2 mb-4 border rounded-lg text-[13px]"
+                value={
+                  formData.country
+                    ? { value: formData.country, label: formData.country }
+                    : null
+                } // Ensure the value is an object
                 placeholder="Select Country"
-                required
               />
+              {errors.country && (
+                <p className="text-red-500 text-xs">{errors.country}</p>
+              )}
 
-              {/* State of Residence Input */}
               <label className="block mb-2 font-[400] text-[13px] pl-2">
                 State of Residence
               </label>
-              <input
-                type="text"
+              <Select
+                className="text-[13px] mb-4"
+                options={states}
+                onChange={handleStateChange}
+                value={
+                  formData.state
+                    ? { value: formData.state, label: formData.state }
+                    : null
+                } // Ensure the value is an object
                 name="state"
-                value={formData.state}
-                onChange={handleChange}
-                className="w-full p-2 mb-4 border rounded-lg text-[13px]"
-                placeholder="Select State of Residence"
-                required
+                placeholder="Select State"
+                isDisabled={isStateDisabled} // Disable state dropdown if no country is selected
               />
+              {errors.state && (
+                <p className="text-red-500 text-xs">{errors.state}</p>
+              )}
 
               {/* Experience Level Dropdown */}
               <label className="block mb-2 font-[400] text-[13px] pl-2">
@@ -331,119 +415,172 @@ function Registration() {
                 <option value="Advanced">Advanced</option>
               </select>
 
-              <h2 className="text-[28px] font-[700] mb-6">Other Information</h2>
+              <h2 className="sm:text-left text-[28px] font-bold mb-2">
+                Other Information{" "}
+                <span
+                  className="pl-1 text-[28px] font-bold"
+                  style={{ color: "rgba(255, 135, 43, 1)" }}
+                >
+                  2 of 2
+                </span>
+              </h2>
+              <p className="text-[14px] font-normal mb-6">
+              The information you provide in this section will guide us in reviewing your application more effectively.
+              </p>
 
               {/* Commitment Radio Buttons */}
-              <label className="block mb-2 font-[700] text-gray-700">
-                Can you commit to spending at least 6 hours weekly?
-              </label>
-              <div className="mb-4">
-                <label className="mr-4">
-                  <input
-                    type="radio"
-                    name="commitment"
-                    value="Yes"
-                    checked={formData.commitment === "Yes"}
-                    onChange={handleChange}
-                  />{" "}
-                  Yes
+              <div className="mb-6">
+                <label className="block mb-2 font-bold text-gray-700">
+                  Can you commit to spending at least 6 hours weekly?
                 </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="commitment"
-                    value="No"
-                    checked={formData.commitment === "No"}
-                    onChange={handleChange}
-                  />{" "}
-                  No
-                </label>
+                <div className="flex space-x-6">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="commitment"
+                      value="Yes"
+                      checked={formData.commitment === "Yes"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    Yes
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="commitment"
+                      value="No"
+                      checked={formData.commitment === "No"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    No
+                  </label>
+                </div>
               </div>
 
               {/* Access Radio Buttons */}
-              <label className="block mb-2 font-[700] text-gray-700">
-                Do you have access to a laptop and internet?
-              </label>
-              <div className="mb-4">
-                <label className="block">
-                  <input
-                    type="radio"
-                    name="access"
-                    value="Yes, I have both"
-                    checked={formData.access === "Yes, I have both"}
-                    onChange={handleChange}
-                  />{" "}
-                  Yes, I have both laptop and internet access
+              <div className="mb-6">
+                <label className="block mb-2 font-bold text-gray-700">
+                  Do you have access to a laptop and internet?
                 </label>
-                <label className="block">
-                  <input
-                    type="radio"
-                    name="access"
-                    value="Yes, but only laptop"
-                    checked={formData.access === "Yes, but only laptop"}
-                    onChange={handleChange}
-                  />{" "}
-                  Yes, but I have only just a laptop
+                <div className="space-y-4">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="access"
+                      value="Yes, I have both"
+                      checked={formData.access === "Yes, I have both"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    Yes, I have both laptop and internet access
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="access"
+                      value="Yes, but only laptop"
+                      checked={formData.access === "Yes, but only laptop"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    Yes, but only just a laptop
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="access"
+                      value="No access"
+                      checked={formData.access === "No access"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    No, I don’t have any
+                  </label>
+                </div>
+              </div>
+
+              {/* Preferred Day Radio Buttons */}
+              <div className="mb-6">
+                <label className="block mb-2 text-gray-700 font-bold">
+                  Select your preferred day for classes
                 </label>
-                <label className="block">
-                  <input
-                    type="radio"
-                    name="access"
-                    value="No access"
-                    checked={formData.access === "No access"}
-                    onChange={handleChange}
-                  />{" "}
-                  No, I don&lsquo;t have any
-                </label>
+                <div className="flex space-x-6">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="preferredDay"
+                      value="Tuesdays"
+                      checked={formData.preferredDay === "Tuesdays"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    Tuesday
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="preferredDay"
+                      value="Thursdays"
+                      checked={formData.preferredDay === "Thursdays"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    Thursday
+                  </label>
+                </div>
               </div>
 
               {/* Preferred Time Radio Buttons */}
-              <label className="block mb-2 text-gray-700 font-[700]">
-                Select your preferred time for classes
-              </label>
-              <div className="mb-4">
-                <label className="mr-4">
-                  <input
-                    type="radio"
-                    name="preferredTime"
-                    value="9:00AM - 12:00PM"
-                    checked={formData.preferredTime === "9:00AM - 12:00PM"}
-                    onChange={handleChange}
-                  />{" "}
-                  9:00AM - 12:00PM
+              <div className="mb-6">
+                <label className="block mb-2 text-gray-700 font-bold">
+                  Select your preferred time for classes
                 </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="preferredTime"
-                    value="3:00PM - 6:00PM"
-                    checked={formData.preferredTime === "3:00PM - 6:00PM"}
-                    onChange={handleChange}
-                  />{" "}
-                  3:00PM - 6:00PM
-                </label>
+                <div className="flex space-x-6">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="preferredTime"
+                      value="9:00AM - 12:00PM"
+                      checked={formData.preferredTime === "9:00AM - 12:00PM"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    9:00AM - 12:00PM
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name="preferredTime"
+                      value="3:00PM - 6:00PM"
+                      checked={formData.preferredTime === "3:00PM - 6:00PM"}
+                      onChange={handleChange}
+                      className="mr-2"
+                    />
+                    3:00PM - 6:00PM
+                  </label>
+                </div>
               </div>
 
               {/* Additional Comment Textarea */}
-              <label className="block mb-2 text-gray-700 font-[700]">
-                Additional Comment (Optional)
-              </label>
-              <textarea
-                name="comment"
-                value={formData.comment}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Type here"
-                maxLength={maxLength}
-                style={{
-                  overflowY: "auto",
-                  resize: "none",
-                  whiteSpace: "pre-wrap",
-                }}
-              />
-              <div className="text-right text-sm mb-4">
-                <span>{maxLength - formData.comment.length}</span> characters
-                remaining
+              <div className="mb-6">
+                <label className="block mb-2 text-gray-700 font-bold">
+                  Additional Comment
+                </label>
+                <textarea
+                  name="comment"
+                  value={formData.comment}
+                  onChange={handleChange}
+                  className="w-full p-3 border rounded-lg h-[9em] resize-none"
+                  placeholder="Type here"
+                  maxLength={maxLength}
+                  style={{ overflowY: "auto", whiteSpace: "pre-wrap" }}
+                />
+                <div className="text-right text-sm mt-2">
+                  <span>{maxLength - formData.comment.length}</span> characters
+                  remaining
+                </div>
               </div>
 
               <button

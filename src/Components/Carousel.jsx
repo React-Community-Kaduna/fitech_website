@@ -69,6 +69,7 @@ const data = [
 ];
 
 const Carousel = () => {
+  // eslint-disable-next-line no-unused-vars
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [activeSlide, setActiveSlide] = useState(0);
 
