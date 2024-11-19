@@ -1,7 +1,7 @@
 import React from "react";
 import footerLogo from "../assets/footer_logo.png";
 import Button from "./Button";
-import SubscribeForm from "./SubscribeForm";
+// import SubscribeForm from "./SubscribeForm";
 import { FaTwitter, FaYoutube, FaDiscord } from "react-icons/fa";
 import { Link } from "react-router-dom";
 

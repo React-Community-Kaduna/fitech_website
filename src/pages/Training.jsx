@@ -113,7 +113,7 @@ const Training = () => {
                 : "bg-transparent"
             } transition-colors duration-500`}
           >
-            <div className="md:flex items-center justify-between py-4 px-7 z-50">
+            <div className="md:flex items-center justify-between px-7 z-50">
               <div className="font-bold text-2xl cursor-pointer flex items-center">
                 <Link to="/">
                   <img className="w-[150px]" src={logo} alt="Community logo" />
@@ -133,7 +133,7 @@ const Training = () => {
                 }`}
               >
                 {/* Menu items */}
-                <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+                <ul className="md:flex md:items-center md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in">
                   {navigation.map((item) => (
                     <li className="md:ml-8 text-xl md:my-0 my-7">
                       <NavLink
@@ -142,7 +142,7 @@ const Training = () => {
                             "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
                             (isActive
                               ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-500 ease-in")
                           );
                         }}
                         key={item.name}
