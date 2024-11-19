@@ -10,11 +10,19 @@ import aboutImg2 from "../assets/aboutImg2.png";
 import aboutImg3 from "../assets/aboutImg3.png";
 import frame from "../assets/aboutframe.png";
 import Members from "../Components/Members";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Training", href: "/training" },
+  { name: "Events", href: "/events" },
+  { name: "Blog", href: "/blog" },
+];
 
 function About() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,6 +57,7 @@ function About() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* <Nav /> */}
       <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
         <div className="md:flex items-center justify-between py-4 px-7 z-50">
           <div className="font-bold text-2xl cursor-pointer flex items-center">
@@ -62,42 +71,51 @@ function About() {
           >
             {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
           </button>
-          <ul
-            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
-              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-490px]"
+          <div
+            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 gap-5 transition-all duration-500 ease-in ${
+              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-550px]"
             }`}
           >
             {/* Menu items */}
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/training">Trainings</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/events">Events</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/blog">Blogs</Link>
-            </li>
+            <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+              {navigation.map((item) => (
+                <li className="md:ml-8 text-xl md:my-0 my-7">
+                  <NavLink
+                    className={({ isActive }) => {
+                      return (
+                        "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
+                        (isActive
+                          ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                      );
+                    }}
+                    key={item.name}
+                    to={item.href}
+                  >
+                    {item.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
 
-            <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-              <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                Join Us
-              </Button>
-              <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                Contact Us
-              </Button>
+            <span className="flex flex-col md:flex-row gap-5">
+              <Link to="/registration">
+                <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                  Register Now
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                  Contact Us
+                </Button>
+              </Link>
             </span>
-          </ul>
+          </div>
         </div>
       </NavBar>
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px]">
         {/* Hero Section */}
-        <section className="w-full relative container mx-auto py-6 overflow-hidden">
+        <section className="container mx-auto py-8 md:py-10 lg:py-12">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="absolute inset-0">
               <img
@@ -125,9 +143,11 @@ function About() {
                 your ideas to life.
               </motion.p>
               <motion.div {...fadeInUp}>
-                <Button className="bg-[#1E90FF] px-7 py-2 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
-                  Join the Community
-                </Button>
+                <a href="https://discord.gg/9REgpp5r">
+                  <Button className="bg-[#1E90FF] px-7 py-2 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
+                    Join the Community
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -163,10 +183,12 @@ function About() {
                 {...stagger}
                 className="flex flex-col sm:flex-row gap-5 mt-5"
               >
-                <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
-                  Join us
-                </Button>
-                <Button className="bg-none border-2 border-gray-600 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
+                <a href="https://discord.gg/9REgpp5r">
+                  <Button className="bg-[#1E90FF] px-6 py-3 hover:bg-gray-500 duration-500 text-white md:w-auto w-full rounded-[0.5rem]">
+                    Join us
+                  </Button>
+                </a>
+                <Button className="bg-none border-2 border-[#1E90FF] px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
                   Become a Sponsor
                 </Button>
               </motion.div>

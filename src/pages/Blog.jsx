@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
+import SubscribeForm from "../Components/SubscribeForm";
 import bgImg from "../assets/blogBg.jpeg";
 import Button from "../Components/Button";
 import card1 from "../assets/cardBg1.jpeg";
@@ -8,11 +10,18 @@ import card2 from "../assets/cardBg2.jpeg";
 import card3 from "../assets/cardBg3.jpeg";
 import BSBG from "../assets/blogsecBg.jpeg";
 import AIBG from "../assets/aiBg.jpeg";
-
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Training", href: "/training" },
+  { name: "Events", href: "/events" },
+  { name: "Blog", href: "/blog" },
+];
 
 const posts = [
   {
@@ -47,6 +56,25 @@ const posts = [
   },
 ];
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 function Blog() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,7 +99,7 @@ function Blog() {
       {/* Hero Section */}
       <section className="relative w-full h-screen mt-0 bg-transparent">
         <div
-          className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
+          className="height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url(${bgImg})`,
           }}
@@ -96,83 +124,106 @@ function Blog() {
               >
                 {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
               </button>
-              <ul
-                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+              <div
+                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-10 p-5 gap-5 transition-all duration-500 ease-in ${
                   isMenuOpen
                     ? "top-0 opacity-100 pt-14"
-                    : "top-[-490px] text-white"
+                    : "top-[-550px] text-white"
                 }`}
               >
                 {/* Menu items */}
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/about">About</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/training">Trainings</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/events">Events</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/blog">Blogs</Link>
-                </li>
+                <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+                  {navigation.map((item) => (
+                    <li className="md:ml-8 text-xl md:my-0 my-7">
+                      <NavLink
+                        className={({ isActive }) => {
+                          return (
+                            "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
+                            (isActive
+                              ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-500 ease-in")
+                          );
+                        }}
+                        key={item.name}
+                        to={item.href}
+                      >
+                        {item.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
 
-                <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-                  <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                    Join Us
-                  </Button>
-                  <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                    Contact Us
-                  </Button>
+                <span className="flex flex-col md:flex-row gap-5">
+                  <Link to="/registration">
+                    <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                      Register Now
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                      Contact Us
+                    </Button>
+                  </Link>
                 </span>
-              </ul>
+              </div>
             </div>
           </NavBar>
-          <div className="w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            className="w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8"
+          >
             <h1 className="text-3xl md:text-5xl mb-4 text-white text-center">
-              News, Articles and Insights on Tech{" "}
+              News, Articles and Insights on Tech
             </h1>
             <p>
               Subscribe now to receive the latest updates on cutting edge
               applications, breakthrough <br /> technologies and the most
               important news in the tech world
             </p>
-            <div className="w-full md:w-[500px] bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg">
-              <input
-                className="w-full p-2 outline-none active:border-none text-gray-900"
-                for="text"
-                placeholder="Enter your email address"
-              />
-              <Button className="bg-[#1E90FF] rounded-lg p-2 hover:bg-gray-500 duration-500 text-[white]">
-                Subscribe
-              </Button>
-            </div>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <SubscribeForm />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       <main className="flex-1 container mx-auto px-4 py-12">
         {/* Featured Post Section */}
-        <section className="mb-16">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          variants={fadeInUp}
+          className="mb-16"
+        >
           <h2 className="text-2xl md:text-3xl font-bold mb-8">Recent Posts</h2>
           <div className="relative w-full rounded-2xl overflow-hidden h-[400px] md:h-[500px]">
             <div
-              className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
+              className="height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
               style={{
                 backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)), url(${BSBG})`,
               }}
             />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
-              <div className="w-full py-5 md:max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: false }}
+              className="absolute bottom-0 left-0 right-0 md:p-8 text-white"
+            >
+              <div className="bg-blue-800 bg-clip-padding backdrop-filter md:backdrop-blur-sm bg-opacity-10  w-full rounded-2xl p-5">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
                   The world of Tech and what the future holds
                 </h3>
                 <p className="text-lg mb-6">
                   Artificial Intelligence (AI) is revolutionizing the world of
-                  coding, transforming how developers approach software
+                  coding, transforming how developers <br /> approach software
                   creation. With AI-powered tools, coding .....
                 </p>
                 <div className="flex flex-col sm:flex-row gap-6">
@@ -186,18 +237,30 @@ function Blog() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* All Posts Grid */}
-        <section>
-          <h2 className="text-2xl md:text-3xl font-bold mb-8">All Posts</h2>
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          variants={staggerContainer}
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-2xl md:text-3xl font-bold mb-8"
+          >
+            All Posts
+          </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <div
+            {posts.map((post, index) => (
+              <motion.div
                 key={post.title}
+                variants={fadeInUp}
                 className="rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-500"
+                whileHover={{ y: -10 }}
               >
                 <img
                   src={post.image}
@@ -213,10 +276,10 @@ function Blog() {
                     {post.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <Footer />

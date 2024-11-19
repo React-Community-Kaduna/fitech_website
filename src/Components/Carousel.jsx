@@ -3,28 +3,29 @@ import { LucideQuote } from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import cardImg from "../assets/fitech.png";
-import Aisha from "../assets/Aisha.jpeg";
+import Aisha from "../assets/Aisha Kabir.png";
 import Rufai from "../assets/RufaiUsman.jpeg";
 import Goodness from "../assets/Goodness.jpeg";
 import Wanjala from "../assets/Wanjala.jpg";
 import bolaji from "../assets/Oluwatobi.png";
-// import bolaji from "../assets/Oluwatobi.png"
+import Tali from "../assets/Tali Nanzing.jpg";
+import Jethro from "../assets/Jethro IRMIYA.jpg";
+import Eniola from "../assets/Eniola atilola.jpeg";
+import Fahad from "../assets/fahad sabiu.png";
 
 const data = [
   {
-    name: "Bashir Ibrahim Saleh",
+    name: "IRMIYA JETHRO MBATA",
     review:
-      "Joining FiTech was a game-changer for me. Their comprehensive training program not only honed my web development skills but also provided invaluable career guidance. With their support, I built a strong portfolio and gained the confidence to ace my interviews. Thanks to FiTech, I landed my first job as a web developer, and I couldn't be more grateful for their mentorship and support.",
-    description: "Corhot one graduate",
-    img: cardImg,
+      "an amazing platform that enhances our abilities to learn and grow over time and space. am so excited to be part of this community.",
+    img: Jethro,
   },
   {
-    name: "Emmanuel",
+    name: "Adetoro Islamiat Eniola",
     review:
-      "The community has really been a great place to ask questions freely and get expert support and advice from members, I had my bug being busted within an hour, interestingly this was at around 11pm till past 12am.We have people who are passionate to volunteer their time to help you.",
+      "Job Weldone to our mentors and sub mentors they are doing a great job.",
     description: "Web3 Developer at Spillage",
-    img: cardImg,
+    img: Eniola,
   },
   {
     name: "Bolaji Oluwatobi",
@@ -34,11 +35,11 @@ const data = [
     img: bolaji,
   },
   {
-    name: "ADEYINKA",
+    name: "Tali Nanzing",
     review:
-      "Some of us are missing out of the classes cos were usually at work at the said times and we cant catch up. kindly help do something about this.",
+      " FiTech has been an incredible experience for me so far. It's more than just a community—it's a solid support system for young developers like me who are stepping into the tech world. Currently, I'm part of their ongoing cohort on front-end development, and it's been nothing short of amazing. The program is well-structured, with experienced mentors guiding us every step of the way. They've made learning JavaScript feel so achievable, The mentorship and hands-on approach have been games changers for my learning journey",
     description: "Web3 Developer at Spillage",
-    img: cardImg,
+    img: Tali,
   },
   {
     name: "ONU GOODNESS AMADI",
@@ -60,11 +61,6 @@ const data = [
     img: Rufai,
   },
   {
-    name: "Asma'u Abubakar",
-    review: "We have learned a lot about web development ",
-    img: cardImg,
-  },
-  {
     name: "Caleb Wanjala",
     review:
       "The sessions are interactive looking forward to grow my tech skills.",
@@ -75,6 +71,7 @@ const data = [
 const Carousel = () => {
   // eslint-disable-next-line no-unused-vars
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
@@ -91,39 +88,64 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    beforeChange: (current, next) => setActiveSlide(next),
+    className: "center",
+    adaptiveHeight: true,
   };
 
   return (
-    <div className="w-full md:w-3/4 m-auto">
+    <div className="w-full md:w-3/4 mx-auto px-4 md:px-0">
       <div className="pb-5">
         <Slider {...settings}>
-          {data.map((d) => (
+          {data.map((d, index) => (
             <div
-              className="shadow-3xl border-2 w-full h-[350px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden"
+              className="shadow-3xl border-2 w-full h-auto rounded-lg overflow-hidden transition-transform duration-500 ease-in-out"
               key={d.name}
             >
-              <div className="shadow-lg flex flex-row-reverse h-full">
-                <div className="w-[50%]">
+              <div className="shadow-lg flex flex-col md:flex-row-reverse h-full">
+                <div className="w-full md:w-[50%] h-[200px] md:h-[400px] lg:h-[500px]">
                   <img
-                    className="h-full w-full object-cover"
+                    className={`h-full w-full object-cover transition-transform duration-700 ${
+                      activeSlide === index ? "scale-100" : "scale-110"
+                    }`}
                     src={d.img}
                     alt=""
                   />
                 </div>
 
-                <div className="text-white bg-[#1E90FF] w-[50%] px-3 py-4 md:p-10 flex flex-col items-start justify-center relative">
-                  <LucideQuote className="absolute text-gray-800 opacity-20 w-14 h-14 top-2 left-1" />
-                  <blockquote className="relative z-10">
-                    <p className="text-[10px] md:text-[16px] leading-relaxed italic">
+                <div className="text-white bg-[#1E90FF] w-full md:w-[50%] px-4 py-6 md:p-10 flex flex-col items-start justify-center relative min-h-[250px] md:min-h-[400px] lg:min-h-[500px]">
+                  <LucideQuote
+                    className={`absolute text-gray-800 opacity-20 w-10 h-10 md:w-14 md:h-14 top-2 left-1 transition-all duration-500 ${
+                      activeSlide === index
+                        ? "translate-y-0 opacity-20"
+                        : "-translate-y-full opacity-0"
+                    }`}
+                  />
+                  <blockquote
+                    className={`relative z-10 transition-all duration-500 ${
+                      activeSlide === index
+                        ? "translate-x-0 opacity-100"
+                        : "translate-x-full opacity-0"
+                    }`}
+                  >
+                    <p className="text-[14px] md:text-[16px] leading-relaxed italic max-h-[150px] md:max-h-none overflow-y-auto md:overflow-visible pr-2">
                       {d.review}
                     </p>
-                    <div>
-                      <h4 className="text-[12px] md:text-[16px] mt-5">
+                    <div
+                      className={`transition-all duration-500 delay-200 mt-4 md:mt-5 ${
+                        activeSlide === index
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-4 opacity-0"
+                      }`}
+                    >
+                      <h4 className="text-[14px] md:text-[16px] font-semibold">
                         {d.name}
                       </h4>
-                      <p className="text-[10px] md:text-[16px]">
-                        {d.description}
-                      </p>
+                      {d.description && (
+                        <p className="text-[12px] md:text-[16px] mt-1 text-gray-100">
+                          {d.description}
+                        </p>
+                      )}
                     </div>
                   </blockquote>
                 </div>

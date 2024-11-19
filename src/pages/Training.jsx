@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LucideQuote } from "lucide-react";
 import NavBar from "../Components/NavBar";
+import SubscribeForm from "../Components/SubscribeForm";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/train1.jpeg";
 import Button from "../Components/Button";
@@ -18,7 +19,43 @@ import { IoSchoolOutline } from "react-icons/io5";
 import { PiChalkboardTeacher } from "react-icons/pi";
 import { GoBriefcase } from "react-icons/go";
 import { TbWorldDollar } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+
+const navigation = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Training", href: "/training" },
+  { name: "Events", href: "/events" },
+  { name: "Blog", href: "/blog" },
+];
+
+// Add AnimatedSection component
+const AnimatedSection = ({ children, className = "" }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = React.useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => setIsVisible(entry.isIntersecting));
+    });
+
+    const { current } = domRef;
+    observer.observe(current);
+
+    return () => observer.unobserve(current);
+  }, []);
+
+  return (
+    <div
+      ref={domRef}
+      className={`transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const data = [
   {
@@ -88,42 +125,51 @@ const Training = () => {
               >
                 {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
               </button>
-              <ul
-                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in ${
+              <div
+                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-10 p-5 gap-5 transition-all duration-500 ease-in ${
                   isMenuOpen
                     ? "top-0 opacity-100 pt-14"
-                    : "top-[-490px] text-white"
+                    : "top-[-550px] text-white"
                 }`}
               >
                 {/* Menu items */}
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/">Home</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/about">About</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/training">Trainings</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/events">Events</Link>
-                </li>
-                <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-                  <Link to="/blog">Blogs</Link>
-                </li>
+                <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+                  {navigation.map((item) => (
+                    <li className="md:ml-8 text-xl md:my-0 my-7">
+                      <NavLink
+                        className={({ isActive }) => {
+                          return (
+                            "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
+                            (isActive
+                              ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white")
+                          );
+                        }}
+                        key={item.name}
+                        to={item.href}
+                      >
+                        {item.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
 
-                <span className="flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-                  <Button className="bg-[#1E90FF] p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                    Join Us
-                  </Button>
-                  <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                    Contact Us
-                  </Button>
+                <span className="flex flex-col md:flex-row gap-5">
+                  <Link to="/registration">
+                    <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
+                      Register Now
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
+                      Contact Us
+                    </Button>
+                  </Link>
                 </span>
-              </ul>
+              </div>
             </div>
           </NavBar>
-          <div className="md:ml-16 flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
+          <AnimatedSection className="md:ml-16 flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
             <h1
               className="text-3xl md:text-5xl text-white"
               data-testid="hero-heading"
@@ -142,27 +188,23 @@ const Training = () => {
                   Register Now
                 </Button>
               </Link>
-              {/* <Link to="/courses">
-              <Button className="bg-none px-5 py-3 border-3 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
-                Explore Courses
-              </Button>
-              </Link> */}
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section className="text-center">
+        <AnimatedSection className="text-center">
           <h3 className="text-xl md:text-2xl font-bold text-gray-800tld mb-4">
             Choose the Perfect Course for Your Career
           </h3>
           <p>Find the Ideal course to move your career forward</p>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-10 mt-8">
             {data.map((item, index) => (
-              <div
+              <AnimatedSection
                 key={index}
                 className="w-full md:w-[400px] h-[500px] bg-white rounded-lg shadow-lg relative overflow-hidden"
+                style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <img
                   src={item.bgImg}
@@ -189,13 +231,13 @@ const Training = () => {
                     </Button>
                   </Link>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
-        </section>
+        </AnimatedSection>
         <section className="my-20 w-full">
           <div className="flex flex-col md:flex-row justify-center items-center gap-32">
-            <div className="relative w-full mb-8 md:mb-0">
+            <AnimatedSection className="relative w-full mb-8 md:mb-0">
               <img
                 className="w-full md:w-[448px] h-[536px] rounded-tr-[40px] rounded-bl-[40px] object-cover"
                 src={WCU}
@@ -216,8 +258,8 @@ const Training = () => {
                   </h4>
                 </blockquote>
               </div>
-            </div>
-            <div className="w-full px-4 sm:px-6 lg:px-8">
+            </AnimatedSection>
+            <AnimatedSection className="w-full px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
               <ul>
                 <li className="flex items-start gap-3 py-3">
@@ -246,7 +288,7 @@ const Training = () => {
                   Networking opportunities and Mentorship
                 </li>
               </ul>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
         <section
@@ -255,7 +297,7 @@ const Training = () => {
             backgroundImage: `linear-gradient(to right, rgba(30,144,255, 0.3), rgba(30,144,255, 0.3)), url(${bkg})`,
           }}
         >
-          <div className="w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">
             <h3 className="text-xl md:text-2xl font-bold mb-4 text-white text-center">
               Get Updates For Free
             </h3>
@@ -263,17 +305,7 @@ const Training = () => {
               Subscribe to our newsletter and never miss out on updates offers
               and expert insights
             </p>
-            <div className="bg-white p-2 flex md:flex-row items-center mt-8 rounded-lg">
-              <input
-                className="w-full p-2 outline-none active:border-none text-gray-900"
-                // eslint-disable-next-line react/no-unknown-property
-                for="text"
-                placeholder="Your email"
-              />
-              <Button className="bg-[#1E90FF] rounded-lg p-2 hover:bg-gray-500 duration-500 text-[white]">
-                Subscribe
-              </Button>
-            </div>
+            <SubscribeForm />
           </div>
         </section>
       </main>
