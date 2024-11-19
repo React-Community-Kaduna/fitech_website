@@ -3,6 +3,12 @@ import footerLogo from "../assets/footer_logo.png";
 import Button from "./Button";
 import SubscribeForm from "./SubscribeForm";
 import { FaTwitter, FaYoutube, FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+// import { FaLinkedinIn } from "react-icons/fa";
+// import { FaInstagram } from "react-icons/fa6";
+// import { FaFacebookF } from "react-icons/fa";
+// import { FaYoutube } from "react-icons/fa6";
+// import { FaDiscord } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function Footer() {

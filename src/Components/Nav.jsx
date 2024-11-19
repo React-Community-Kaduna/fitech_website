@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
