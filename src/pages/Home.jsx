@@ -19,7 +19,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Training", href: "/training" },
-  { name: "Events", href: "/events" },
+  // { name: "Events", href: "/events" },
   { name: "Blog", href: "/blog" },
 ];
 
@@ -74,7 +74,7 @@ function Home() {
     <div className="w-full min-h-screen flex flex-col bg-none">
       <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
         <div className="md:flex items-center justify-between px-7 z-50">
-          <div className="font-bold text-2xl cursor-pointer flex items-center">
+          <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
             <Link to="/">
               <img className="w-[150px]" src={logo} alt="Community logo" />
             </Link>
@@ -172,8 +172,8 @@ function Home() {
                 {[
                   { number: "500+", text: "Active Members" },
                   { number: "20+", text: "Scholarships Awarded" },
-                  { number: "200+", text: "Trained Mentees" },
-                  { number: "80+", text: "Products Built" },
+                  { number: "100+", text: "Trained Mentees" },
+                  { number: "Multiple", text: "Projects Built" },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -235,23 +235,28 @@ function Home() {
               </h3>
               <div className="space-y-3 md:space-y-4 text-base text-gray-800 md:text-lg px-4 w-full">
                 <p>
-                  Fitech is a vibrant community of tech enthusiasts from various
+                  FiTech (formerly known as Kaduna React Developers Community)
+                  is a vibrant community of tech enthusiasts from various
                   specialties, providing support to advance careers and bring
                   innovative ideas to life.
                 </p>
                 <p>
-                  Since 2021, we've grown rapidly, creating a space for
-                  knowledge sharing and premium mentorship. Our mission is to
-                  empower global innovators to learn, innovate boldly, and shape
-                  the future of technology.
+                  The community has rapidly expanded from front end development
+                  to various fields like Web 3, Artificial Intelligence, Machine
+                  Learning, Data Science and Analytics, Graphics and Product
+                  Design, Content Writing, Digital Marketing and so much more,
+                  stretching our boundaries.Since 2021, we've grown rapidly,
+                  creating a space for knowledge sharing and premium mentorship.
+                  Our mission is to empower global innovators to learn, innovate
+                  boldly, and shape the future of technology.
                 </p>
                 <p>
-                  With over 500 members, we offer online events, mentorship, and
-                  resources, breaking down geographic and financial barriers.
-                  Our community has achieved significant milestones, including
-                  scholarships, internet support, and collaborative projects
-                  like EventHub, showcasing our commitment to growth and mutual
-                  support.
+                  With over 500 members, we offer bootcamps, virtual events,
+                  mentorship, and resources, breaking down geographic and
+                  financial barriers. Our community has achieved significant
+                  milestones, including scholarships, internet support, and
+                  collaborative projects like EventHub, showcasing our
+                  commitment to growth and mutual support.
                 </p>
               </div>
               <div className="pt-6 md:pt-8">

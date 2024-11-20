@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="w-full md:h-[3/4] bg-[#1978D4] py-6 mt-10">
-      <div className="container md:py-16 md:px-12 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="md:h-[250px] md:w-[1000] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-white">
+    <footer className="w-full md:h-[3/4] bg-[#1978D4] py-6 mt-10 flex flex-col justify-center">
+      <div className="md:py-16 md:px-12 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+        <div className="md:h-[250px] md:w-[800px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
           {/* Logo and About Section */}
           <div>
             <img
@@ -79,7 +79,7 @@ function Footer() {
           </div>
 
           {/* Legal Section */}
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h4 className="text-base sm:text-lg font-medium">Legal</h4>
             <nav className="space-y-2">
               {["Partners", "Terms and Conditions", "Policy and Privacy"].map(
@@ -93,7 +93,7 @@ function Footer() {
                 )
               )}
             </nav>
-          </div>
+          </div> */}
 
           {/* Newsletter Section */}
           <div className="space-y-4">

@@ -25,7 +25,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Training", href: "/training" },
-  { name: "Events", href: "/events" },
+  // { name: "Events", href: "/events" },
   { name: "Blog", href: "/blog" },
 ];
 
@@ -114,7 +114,7 @@ const Training = () => {
             } transition-colors duration-500`}
           >
             <div className="md:flex items-center justify-between px-7 z-50">
-              <div className="font-bold text-2xl cursor-pointer flex items-center">
+              <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
                 <Link to="/">
                   <img className="w-[150px]" src={logo} alt="Community logo" />
                 </Link>

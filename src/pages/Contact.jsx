@@ -8,7 +8,14 @@ import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FaTwitter, FaYoutube, FaDiscord } from "react-icons/fa";
+import {
+  FaTwitter,
+  FaYoutube,
+  FaDiscord,
+  FaWhatsapp,
+  FaPhone,
+} from "react-icons/fa";
+
 import { FaRegUser } from "react-icons/fa6";
 import { GoMail } from "react-icons/go";
 
@@ -16,7 +23,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Training", href: "/training" },
-  { name: "Events", href: "/events" },
+  // { name: "Events", href: "/events" },
   { name: "Blog", href: "/blog" },
 ];
 
@@ -78,7 +85,7 @@ const Contact = () => {
             } transition-colors duration-500`}
           >
             <div className="md:flex items-center justify-between px-7 z-50">
-              <div className="font-bold cursor-pointer flex items-center">
+              <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
                 <Link to="/">
                   <img className="w-[150px]" src={logo} alt="Community logo" />
                 </Link>
@@ -190,11 +197,21 @@ const Contact = () => {
                 </ul>
               </div>
             </div>
-            <div className="md:w-[600px] w-full border-2 md:mt-0 mt-10 border-gray-300 border-t-0 md:p-10 p-2 rounded-xl shadow-sm">
+            <div className=" flex flex-col items-center justify-center md:w-[600px] w-full border-2 md:mt-0 mt-10 border-gray-300 md:p-10 p-2 rounded-xl shadow-sm">
               <h3 className="text-[28px] mb-2">Send us a message</h3>
-              <p>Fill out the form carefully</p>
+              {/* <p>Fill out the form carefully</p> */}
+              <span className="flex flex-row items-center gap-5">
+                <a href="mailto:fitechcommunity24@gmail.comsubject=Inquiry%20about%20the%20community&body=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20community.">
+                  <GoMail />
+                </a>
+                <a href="https://wa.me/08166943800" target="_blank">
+                  <FaWhatsapp />
+                </a>
+                <p>or</p>
+                <a href="tel:+2348166943800">Call us now!</a>
+              </span>
 
-              <form className="w-full flex flex-col justify-center mt-10">
+              {/* <form className="w-full flex flex-col justify-center mt-10">
                 <label htmlFor="name">Full name</label>
                 <div className="flex flex-row items-center py-1 px-2 bg-white w-full mb-5 mt-2 rounded-lg overflow-hidden border-2 border-gray-300">
                   <span className="text-gray-400">
@@ -237,7 +254,7 @@ const Contact = () => {
                 <Button className="px-5 py-2 bg-[#1E90FF] my-5 rounded-lg text-white">
                   Send message
                 </Button>
-              </form>
+              </form> */}
             </div>
           </div>
         </section>
@@ -246,5 +263,4 @@ const Contact = () => {
     </div>
   );
 };
-
 export default Contact;

@@ -20,7 +20,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Training", href: "/training" },
-  { name: "Events", href: "/events" },
+  // { name: "Events", href: "/events" },
   { name: "Blog", href: "/blog" },
 ];
 
@@ -59,7 +59,7 @@ function About() {
     <div className="w-full min-h-screen flex flex-col bg-none">
       <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
         <div className="md:flex items-center justify-between px-7 z-50">
-          <div className="font-bold text-2xl cursor-pointer flex items-center">
+          <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
             <Link to="/">
               <img className="w-[150px]" src={logo} alt="Community logo" />
             </Link>
@@ -273,8 +273,12 @@ function About() {
               {...fadeInUp}
               className="mt-4 text-base lg:text-lg text-white mb-10 max-w-xl"
             >
-              Our community has influenced countless lives globally, driving
-              innovation and growth
+              Our community has transformed lives by fostering innovation and
+              growth. Through engaging bootcamps, invaluable mentorship,interns
+              opportunities, and access to essential resources, we empower our
+              members to achieve their full potential in tech careers. Together,
+              we’re shaping the future of technology and creating opportunities
+              for all!
             </motion.p>
             <motion.div {...fadeInUp}>
               <Button className="bg-white border-2 px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
