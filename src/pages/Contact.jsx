@@ -8,6 +8,7 @@ import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { RiWhatsappFill } from "react-icons/ri";
 import {
   FaTwitter,
   FaYoutube,
@@ -192,6 +193,11 @@ const Contact = () => {
                   <li>
                     <a href="https://discord.gg/9REgpp5r">
                       <FaDiscord className="text-2xl" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://chat.whatsapp.com/DvtUhe9dU0gLFkwnyCMJ8M">
+                      <RiWhatsappFill className="text-2xl" />
                     </a>
                   </li>
                 </ul>

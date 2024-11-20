@@ -1,7 +1,7 @@
 import React from "react";
 import footerLogo from "../assets/footer_logo.png";
 import Button from "./Button";
-// import SubscribeForm from "./SubscribeForm";
+import { RiWhatsappFill } from "react-icons/ri";
 import { FaTwitter, FaYoutube, FaDiscord } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -40,6 +40,11 @@ function Footer() {
                 <li>
                   <a href="https://discord.gg/9REgpp5r">
                     <FaDiscord className="text-2xl" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://chat.whatsapp.com/DvtUhe9dU0gLFkwnyCMJ8M">
+                    <RiWhatsappFill className="text-2xl" />
                   </a>
                 </li>
               </ul>
