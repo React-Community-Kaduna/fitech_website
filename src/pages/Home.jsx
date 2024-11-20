@@ -332,7 +332,7 @@ function Home() {
             <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 md:mb-8">
               Voices of Our Community! Real Stories, Real Impact.
             </h3>
-            <ul className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 text-sm md:text-base">
+            {/* <ul className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 text-sm md:text-base">
               <li className="cursor-pointer hover:text-[orangered]">
                 STUDENTS
               </li>
@@ -340,7 +340,7 @@ function Home() {
               <li className="cursor-pointer hover:text-[orangered]">
                 COMMUNITY
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <Carousel />
