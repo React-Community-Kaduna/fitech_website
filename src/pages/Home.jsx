@@ -19,7 +19,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Training", href: "/training" },
-  { name: "Events", href: "/events" },
+  // { name: "Events", href: "/events" },
   { name: "Blog", href: "/blog" },
 ];
 
@@ -73,8 +73,8 @@ function Home() {
   return (
     <div className="w-full min-h-screen flex flex-col bg-none">
       <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
-        <div className="md:flex items-center justify-between py-4 px-7 z-50">
-          <div className="font-bold text-2xl cursor-pointer flex items-center">
+        <div className="md:flex items-center justify-between px-7 z-50">
+          <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
             <Link to="/">
               <img className="w-[150px]" src={logo} alt="Community logo" />
             </Link>
@@ -91,7 +91,7 @@ function Home() {
             }`}
           >
             {/* Menu items */}
-            <ul className="md:flex md:items-center md:pb-5 pb-10 md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 transition-all duration-500 ease-in">
+            <ul className="md:flex md:items-center md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in">
               {navigation.map((item) => (
                 <li className="md:ml-8 text-xl md:my-0 my-7">
                   <NavLink
@@ -123,35 +123,6 @@ function Home() {
                 </Button>
               </Link>
             </span>
-
-            {/* <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/training">Trainings</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/events">Events</Link>
-            </li>
-            <li className="md:ml-8 text-xl md:my-0 my-7 hover:text-gray-400 duration-500">
-              <Link to="/blog">Blogs</Link>
-            </li>
-
-            <span className="w-full flex flex-col md:flex-row gap-5 lg:ml-[130px]">
-              <Link to="/registration">
-                <Button className="bg-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                  Register Now
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button className="bg-none px-5 py-3 border-2 border-white rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                  Contact Us
-                </Button>
-              </Link>
-            </span> */}
           </div>
         </div>
       </NavBar>
@@ -201,8 +172,8 @@ function Home() {
                 {[
                   { number: "500+", text: "Active Members" },
                   { number: "20+", text: "Scholarships Awarded" },
-                  { number: "200+", text: "Trained Mentees" },
-                  { number: "80+", text: "Products Built" },
+                  { number: "100+", text: "Trained Mentees" },
+                  { number: "Multiple", text: "Projects Built" },
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -264,23 +235,28 @@ function Home() {
               </h3>
               <div className="space-y-3 md:space-y-4 text-base text-gray-800 md:text-lg px-4 w-full">
                 <p>
-                  Fitech is a vibrant community of tech enthusiasts from various
+                  FiTech (formerly known as Kaduna React Developers Community)
+                  is a vibrant community of tech enthusiasts from various
                   specialties, providing support to advance careers and bring
                   innovative ideas to life.
                 </p>
                 <p>
-                  Since 2021, we've grown rapidly, creating a space for
-                  knowledge sharing and premium mentorship. Our mission is to
-                  empower global innovators to learn, innovate boldly, and shape
-                  the future of technology.
+                  The community has rapidly expanded from front end development
+                  to various fields like Web 3, Artificial Intelligence, Machine
+                  Learning, Data Science and Analytics, Graphics and Product
+                  Design, Content Writing, Digital Marketing and so much more,
+                  stretching our boundaries.Since 2021, we've grown rapidly,
+                  creating a space for knowledge sharing and premium mentorship.
+                  Our mission is to empower global innovators to learn, innovate
+                  boldly, and shape the future of technology.
                 </p>
                 <p>
-                  With over 500 members, we offer online events, mentorship, and
-                  resources, breaking down geographic and financial barriers.
-                  Our community has achieved significant milestones, including
-                  scholarships, internet support, and collaborative projects
-                  like EventHub, showcasing our commitment to growth and mutual
-                  support.
+                  With over 500 members, we offer bootcamps, virtual events,
+                  mentorship, and resources, breaking down geographic and
+                  financial barriers. Our community has achieved significant
+                  milestones, including scholarships, internet support, and
+                  collaborative projects like EventHub, showcasing our
+                  commitment to growth and mutual support.
                 </p>
               </div>
               <div className="pt-6 md:pt-8">
@@ -356,7 +332,7 @@ function Home() {
             <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 md:mb-8">
               Voices of Our Community! Real Stories, Real Impact.
             </h3>
-            <ul className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 text-sm md:text-base">
+            {/* <ul className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 text-sm md:text-base">
               <li className="cursor-pointer hover:text-[orangered]">
                 STUDENTS
               </li>
@@ -364,7 +340,7 @@ function Home() {
               <li className="cursor-pointer hover:text-[orangered]">
                 COMMUNITY
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <Carousel />

@@ -6,7 +6,7 @@ import Training from "./pages/Training";
 import Registration from "./pages/Registration";
 import Contact from "./pages/Contact";
 import AdminDashboard from "./pages/adminDashboard";
-import Events from "./pages/Events";
+// import Events from "./pages/Events";
 import Blog from "./pages/Blog/";
 import NotFound from "./pages/NotFound";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -42,9 +42,13 @@ const router = createBrowserRouter([
     element: <Registration />,
   },
   {
-    path: "/events",
-    element: <Events />,
+    path:"/Contact",
+    element:<Contact />
   },
+  // {
+  //   path: "/events",
+  //   element: <Events />,
+  // },
   {
     path: "/blog",
     element: <Blog />,

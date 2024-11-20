@@ -18,52 +18,56 @@ const data = [
     name: "IRMIYA JETHRO MBATA",
     review:
       "an amazing platform that enhances our abilities to learn and grow over time and space. am so excited to be part of this community.",
+    description: "",
     img: Jethro,
   },
   {
     name: "Adetoro Islamiat Eniola",
     review:
       "Job Weldone to our mentors and sub mentors they are doing a great job.",
-    description: "Web3 Developer at Spillage",
+    description: "",
     img: Eniola,
   },
   {
     name: "Bolaji Oluwatobi",
     review:
       "To be honest , I didnt expect it would be this amazing , interesting and interative. Please keep it up and Thankyou.",
-    description: "Web3 Developer at Spillage",
+    description: "",
     img: bolaji,
   },
   {
     name: "Tali Nanzing",
     review:
       " FiTech has been an incredible experience for me so far. It's more than just a community—it's a solid support system for young developers like me who are stepping into the tech world. Currently, I'm part of their ongoing cohort on front-end development, and it's been nothing short of amazing. The program is well-structured, with experienced mentors guiding us every step of the way. They've made learning JavaScript feel so achievable, The mentorship and hands-on approach have been games changers for my learning journey",
-    description: "Web3 Developer at Spillage",
+    description: "",
     img: Tali,
   },
   {
     name: "ONU GOODNESS AMADI",
     review:
       "So far it has been amazing, our tutors have been amazing, they take their time to explain things to us and they are you very friendly. lts my pleasure being part of this training.",
-    description: "Web3 Developer at Spillage",
+    description: "",
     img: Goodness,
   },
   {
     name: "Aisha Kabir Shittu",
     review:
       "So far our mentor Manodev teaches at the perfect pace ,we understand every step of the way and he ensures we all get along with what he's teaching.",
+    description: "",
     img: Aisha,
   },
   {
     name: "Usman Rufai",
     review:
       "The class hasjust been supercalifragilisticexpialidocious. You need to see me doing smiling when I'm working cuz as a novice itjust seems like a magic coding and seeing the results. Overall the class has been so amazing and shout out to our mentors Mano.luka. and Divine. We hope to know better than you",
+    description: "",
     img: Rufai,
   },
   {
     name: "Caleb Wanjala",
     review:
       "The sessions are interactive looking forward to grow my tech skills.",
+    description: "",
     img: Wanjala,
   },
 ];
