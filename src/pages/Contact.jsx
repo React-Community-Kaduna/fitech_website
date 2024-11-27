@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import NavBar from "../Components/NavBar";
+import NavBar, { NavBarContent, PageNavBar } from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/contactBg.jpeg";
 import Button from "../Components/Button";
@@ -17,8 +17,9 @@ import {
   FaPhone,
 } from "react-icons/fa";
 
-import { FaRegUser } from "react-icons/fa6";
+import { FaLinkedin, FaRegUser } from "react-icons/fa6";
 import { GoMail } from "react-icons/go";
+import { LucideMail, LucidePhone, LucideTwitter } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -27,6 +28,37 @@ const navigation = [
   // { name: "Events", href: "/events" },
   { name: "Blog", href: "/blog" },
 ];
+
+const contactList = [
+  {
+    icon: <LucideMail />,
+    text: "Send a message",
+    contact: "fitechcommunity24@gmail.com",
+    buttonText: "Send a Message",
+    url: "mailto:fitechcommunity24@gmail.comsubject=Inquiry%20about%20the%20community&body=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20the%20community."
+  },
+  {
+    icon: <LucidePhone />,
+    text: "Chat or Call",
+    contact: "(+234) 817 006 1600",
+    buttonText: "Call Us",
+    url: "https://wa.me/08166943800"
+  },
+  {
+    icon: <LucideTwitter />,
+    text: "Follow Us",
+    contact: "@fitech_community",
+    buttonText: "Follow Us",
+    url: "https://twitter.com/Fitechcommunity"
+  },
+  {
+    icon: <FaDiscord />,
+    text: "Connect with Us",
+    contact: "@fitech",
+    buttonText: "Connect",
+    url: "https://discord.gg/9REgpp5r"
+  },
+]
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -68,6 +100,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <PageNavBar />
       {/* Hero Section */}
       <section className="relative w-full h-[80%] mt-0">
         <div
@@ -78,75 +111,21 @@ const Contact = () => {
         />
 
         <div className="relative z-10 bg-transparent">
-          <NavBar
-            className={`w-full fixed top-0 left-0 z-50 ${
-              isScrolled
-                ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
-                : "bg-transparent"
-            } transition-colors duration-500`}
+          {/* <NavBar
+            className={`w-full fixed top-0 left-0 z-50 ${isScrolled
+              ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
+              : "bg-transparent"
+              } transition-colors duration-500`}
           >
-            <div className="md:flex items-center justify-between px-7 z-50">
-              <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
-                <Link to="/">
-                  <img className="w-[150px]" src={logo} alt="Community logo" />
-                </Link>
-              </div>
-              <button
-                className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
-                onClick={() => setIsMenuOpen((e) => !e)}
-              >
-                {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
-              </button>
-              <div
-                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-10 p-5 gap-5 transition-all duration-500 ease-in ${
-                  isMenuOpen
-                    ? "top-0 opacity-100 pt-14"
-                    : "top-[-550px] text-white"
-                }`}
-              >
-                {/* Menu items */}
-                <ul className="md:flex md:items-center md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in">
-                  {navigation.map((item) => (
-                    <li className="md:ml-8 text-xl md:my-0 my-7">
-                      <NavLink
-                        className={({ isActive }) => {
-                          return (
-                            "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
-                            (isActive
-                              ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-500 ease-in")
-                          );
-                        }}
-                        key={item.name}
-                        to={item.href}
-                      >
-                        {item.name}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
+            <NavBarContent />
+          </NavBar> */}
 
-                <span className="flex flex-col md:flex-row gap-5">
-                  <Link to="/registration">
-                    <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg md:ml-8 hover:bg-gray-500 hover:text-white duration-500">
-                      Register Now
-                    </Button>
-                  </Link>
-                  <Link to="/contact">
-                    <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg hover:bg-gray-500 duration-500 text-[white]">
-                      Contact Us
-                    </Button>
-                  </Link>
-                </span>
-              </div>
-            </div>
-          </NavBar>
 
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
-            className="w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8"
+            className="hidden w-full h-screen flex flex-col justify-center items-center text-white text-center py-16 px-4 sm:px-6 lg:px-8"
           >
             <h1 className="text-3xl md:text-5xl mb-4 text-white text-center">
               Contact Us
@@ -162,9 +141,38 @@ const Contact = () => {
           </motion.div>
         </div>
       </section>
-      <main className="flex-1 w-full md:px-8 px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">
+
+      <main className="flex-1 w-full md:px-8 px-6 lg:px-8 my-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">
+        <section className="space-y-6 text-center">
+          <h4 className="text-5xl font-medium">
+            Get in touch
+          </h4>
+          <div className="mx-auto text-base w-full lg:w-8/12 text-justify text-pretty">Reach out to our support team for enquiries. We’re here to help with any questions or concerns you may have. Connect with us for updates, feedback, or just say hello!</div>
+        </section>
+
+        <section className="grid grid-cols-1 lg:grid-cols-4 justify-center items-center gap-8 my-12">
+          {
+            contactList.map((eachContact, index) => (
+              <div key={index} className="space-y-2 p-4 rounded-xl border border-[#D6D6D6]">
+                <div className="flex flex-row justify-center items-center text-white size-10 rounded-lg bg-[#1E90FF] mb-12">{eachContact.icon}</div>
+                <div className="space-y-5">
+                  <div>
+                    <h5 className="text-xl font-medium">{eachContact.text}</h5>
+                    <div className="text-base">{eachContact.contact}</div>
+                  </div>
+                  <div>
+                    <a href={eachContact.url}>
+                      <Button className="border border-[#BBBBBB] rounded-lg h-10 px-7 hover:shadow-lg transition duration-300">{eachContact.buttonText}</Button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </section>
+
         <section className="">
-          <div className="w-full flex md:flex-row flex-col justify-around">
+          <div className="hidden w-full flex md:flex-row flex-col justify-around">
             <div className="md:w-[30%] w-full">
               <h4>
                 Need help? <br />

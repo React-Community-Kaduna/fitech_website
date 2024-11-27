@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -11,17 +11,12 @@ import fast_track from "../assets/BBS.jpeg";
 import art_img from "../assets/art.png";
 import blue_bg from "../assets/blueBg.png";
 import frame_img from "../assets/Frame 85.png";
-import NavBar from "../Components/NavBar";
+import NavBar, { NavBarContent, PageNavBar } from "../Components/NavBar";
 import Carousel from "../Components/Carousel";
 import { NavLink, Link } from "react-router-dom";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Training", href: "/training" },
-  // { name: "Events", href: "/events" },
-  { name: "Blog", href: "/blog" },
-];
+import { LucideChevronsRight } from "lucide-react";
+import { FaDiscord } from "react-icons/fa6";
+import { navigationList } from "../constants";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,87 +67,22 @@ function Home() {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-none">
-      <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
-        <div className="md:flex items-center justify-between px-7 z-50">
-          <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
-            <Link to="/">
-              <img className="w-[150px]" src={logo} alt="Community logo" />
-            </Link>
-          </div>
-          <button
-            className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
-            onClick={() => setIsMenuOpen((e) => !e)}
-          >
-            {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
-          </button>
-          <div
-            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 gap-5 transition-all duration-500 ease-in ${
-              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-550px]"
-            }`}
-          >
-            {/* Menu items */}
-            <ul className="md:flex md:items-center md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in">
-              {navigation.map((item) => (
-                <li className="md:ml-8 text-xl md:my-0 my-7">
-                  <NavLink
-                    className={({ isActive }) => {
-                      return (
-                        "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
-                        (isActive
-                          ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white")
-                      );
-                    }}
-                    key={item.name}
-                    to={item.href}
-                  >
-                    {item.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-            <span className="flex flex-col md:flex-row gap-5">
-              <Link to="/registration">
-                <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                  Register Now
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                  Contact Us
-                </Button>
-              </Link>
-            </span>
-          </div>
-        </div>
-      </NavBar>
+      <PageNavBar />
 
-      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px] overflow-x-hidden">
+      <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[40px] md:mt-[80px] lg:mt-[120px] overflow-x-hidden">
         {/* Hero Section */}
         <section className="container mx-auto py-8 md:py-10 lg:py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-y-6 md:gap-y-2 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, margin: "-100px" }}
               variants={fadeUp}
-              className="space-y-4 md:space-y-6 md:pr-4 lg:pr-5 md:border-r-2 lg:border-r-2 border-gray-400"
+              className="space-y-4 md:space-y-6 md:pr-4 lg:pr-5 md:borde-r-2 lg:borde-r-2 border-gray-400"
             >
-              <h1 className="text-2xl md:text-3xl text-gray-900">
+              <h1 className="py-6 text-5xl md:text-6xl lg:text-7xl leading-snug lg:leading-snug text-gray-900 text-pretty md:text-wrap text-center md:text-left">
                 Empowering Tech Innovators Across Africa and Beyond
               </h1>
-              <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-4">
-                <Link to="/registration">
-                  <Button className="bg-[#1E90FF] border-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
-                    Join next cohort
-                  </Button>
-                </Link>
-                <Link to="/about">
-                  <Button className="bg-none border-2 border-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full">
-                    Learn more
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
 
             <motion.div
@@ -160,15 +90,15 @@ function Home() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="space-y-4 md:space-y-6 md:pl-4 lg:pl-8 text-gray-800"
+              className="space-y-8 md:space-y-12 text-gray-800"
             >
-              <p className="text-base md:text-sm">
+              <div className="text-lg md:text-xl leading-loose md:leading-loose text-pretty text-justify md:text-left px-2">
                 Join our tech community and unlock a world of support,
                 innovation, and growth. Connect with like-minded professionals,
                 access cutting-edge resources, and receive mentorship to propel
                 your career forward.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12">
                 {[
                   { number: "500+", text: "Active Members" },
                   { number: "20+", text: "Scholarships Awarded" },
@@ -181,16 +111,29 @@ function Home() {
                     whileInView="visible"
                     viewport={{ once: false }}
                     variants={statCounter}
-                    className="md:text-left text-center"
+                    className="text-center space-y-2"
                   >
-                    <h4 className="text-base md:text-lg font-bold mb-1 md:mb-2">
+                    <h4 className="text-3xl leading-normal md:text-3xl font-bold text-pretty">
                       {stat.number}
                     </h4>
-                    <p className="text-sm md:text-base">{stat.text}</p>
+                    <p className="text-base md:text-lg">{stat.text}</p>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
+
+            <div className="flex flex-col md:flex-row flex-wrap items-center gap-3 md:gap-4 mt-16">
+              <Link to="/registration">
+                <Button className="bg-[#1E90FF] border-[#1E90FF] px-4 md:px-5 py-4 md:py-3 rounded-lg hover:bg-gray-500 duration-500 text-white md:w-auto w-full text-lg font-bold">
+                  Join next cohort
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button className="bg-[#1E90FF2F] borde border-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full text-base">
+                  Learn more
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -212,7 +155,7 @@ function Home() {
         </motion.section>
 
         {/* Who We Are Section */}
-        <section className="container mx-auto py-12 md:py-16 relative">
+        <section className="container mx-auto py-16 md:py-16 relative">
           <div className="relative overflow-hidden">
             <motion.img
               initial={{ opacity: 0, x: 100 }}
@@ -228,19 +171,19 @@ function Home() {
               whileInView="visible"
               viewport={{ once: false, margin: "-100px" }}
               variants={fadeUp}
-              className="max-w-2xl md:max-w-3xl mx-auto text-center space-y-4 md:space-y-6 relative z-10"
+              className="max-w-2xl md:max-w-3xl mx-auto text-center space-y-6 md:space-y-6 relative z-10"
             >
-              <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+              <h3 className="text-4xl md:text-2xl font-bold text-gray-800">
                 Who we are
               </h3>
-              <div className="space-y-3 md:space-y-4 text-base text-gray-800 md:text-lg px-4 w-full">
-                <p>
+              <div className="space-y-3 md:space-y-4 text-base leading-normal text-gray-800 md:text-lg px-2 w-full *:text-[15px] *:lg:text-lg *:leading-loose *:lg:leading-loose *:text-justify *:text-pretty">
+                <div>
                   FiTech (formerly known as Kaduna React Developers Community)
                   is a vibrant community of tech enthusiasts from various
                   specialties, providing support to advance careers and bring
                   innovative ideas to life.
-                </p>
-                <p>
+                </div>
+                <div>
                   The community has rapidly expanded from front end development
                   to various fields like Web 3, Artificial Intelligence, Machine
                   Learning, Data Science and Analytics, Graphics and Product
@@ -249,20 +192,20 @@ function Home() {
                   creating a space for knowledge sharing and premium mentorship.
                   Our mission is to empower global innovators to learn, innovate
                   boldly, and shape the future of technology.
-                </p>
-                <p>
+                </div>
+                <div>
                   With over 500 members, we offer bootcamps, virtual events,
                   mentorship, and resources, breaking down geographic and
                   financial barriers. Our community has achieved significant
                   milestones, including scholarships, internet support, and
                   collaborative projects like EventHub, showcasing our
                   commitment to growth and mutual support.
-                </p>
+                </div>
               </div>
               <div className="pt-6 md:pt-8">
                 <Link to="/about">
-                  <Button className="bg-[#1E90FF] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
-                    More About Us
+                  <Button className="bg-[#1E90FF44] hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-black md:w-auto w-auto text-base flex flex-row items-center gap-x-4">
+                    More About Us <LucideChevronsRight size={20} className="animate-pulse" />
                   </Button>
                 </Link>
               </div>
@@ -271,8 +214,8 @@ function Home() {
         </section>
 
         {/* Fast Track Section */}
-        <section className="container mx-auto py-6 overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 items-center">
+        <section className="container mx-auto my-12 py-6 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -291,19 +234,19 @@ function Home() {
               whileInView="visible"
               viewport={{ once: false, margin: "-100px" }}
               variants={fadeUp}
-              className="flex flex-col justify-between items-start h-auto relative space-y-4 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
+              className="flex flex-col justify-between items-center lg:items-start h-auto relative space-y-6 md:space-y-6 my-8 md:my-10 md:px-4 lg:px-0"
             >
-              <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+              <h3 className="text-3xl md:text-4xl text-center md:text-left font-bold text-gray-800">
                 Fast Track Your Tech Career
               </h3>
-              <p className="text-base md:text-lg">
+              <p className="text-base md:text-lg leading-loose text-pretty text-justify">
                 Be part of our comprehensive training program, designed to equip
                 you with the latest skills and knowledge in the tech industry.
                 Our expert-led workshops and hands-on sessions will help you
                 grow your expertise and advance your career.
               </p>
               <Link to="/registration">
-                <Button className="bg-[#1E90FF]  hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
+                <Button className="bg-[#1E90FF]  hover:bg-gray-500 duration-500 px-4 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full text-base">
                   Register Now
                 </Button>
               </Link>
@@ -326,11 +269,12 @@ function Home() {
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
           variants={fadeUp}
-          className="w-full flex flex-col justify-center items-center my-4 md:my-5 py-4 md:py-6"
+          className="w-full flex flex-col justify-center items-center my-4 md:my-24 py-4 md:py-6"
         >
           <div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 md:mb-8">
-              Voices of Our Community! Real Stories, Real Impact.
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800 text-center mb-6 md:mb-8 space-y-1">
+              <div className="underline decoration-wavy decoration-red-400 underline-offset-4">Voices of Our Community!</div>
+              <div className="text-2xl">Real Stories, Real Impact.</div>
             </h3>
             {/* <ul className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 text-sm md:text-base">
               <li className="cursor-pointer hover:text-[orangered]">
@@ -352,41 +296,43 @@ function Home() {
           whileInView="visible"
           viewport={{ once: false, margin: "-100px" }}
           variants={fadeIn}
-          className="w-full my-8 md:my-10"
+          className="w-full my-8 md:my-24"
         >
           <div className="relative rounded-lg overflow-hidden">
             <img
-              className="w-full z-10 shadow- bg-[rgb(109,160,175)]"
+              className="w-full z-10 shadow- bg-[rgb(8,99,195)]"
               src={blue_bg}
               alt="background"
             />
+            {/* <div className="block lg:hidden w-full h-[400px] z-10 shadow- bg-[rgb(109,160,175)]"></div> */}
             <div className="w-full absolute inset-0 flex items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: false }}
-                className="text-white font-bold py-16 md:bg-none px-4 md:p-8 lg:p-12 w-full  md:w-[700px] absolute z-30"
+                className="text-white font-bold py-16 md:bg-none px-6 md:p-8 lg:p-12 w-full md:w-[700px] absolute z-30 space-y-2 lg:space-y-8"
               >
-                <h3 className="text-xl md:text-2xl font-bold text-white">
+                <h3 className="text-xl md:text-5xl font-bold text-white">
                   Join Our Community
                 </h3>
-                <p className="text-base md:text-lg my-3 lg:text-[22px] md:my-10">
-                  Join our tech community and unlock a world of support,
-                  innovation, and growth
-                </p>
-                <a href="https://discord.gg/9REgpp5r">
-                  <Button className=" border-2 border-white hover:bg-gray-500 hover:text-white duration-500er-2 md:px-5 py-2 md:py-3 rounded-lg text-white md:w-auto w-full">
-                    Join Us
-                  </Button>
-                </a>
+                <div className="block text-sm md:text-lg lg:text-xl font-normal text-pretty leading-loose w-full lg:w-10/12">
+                  Join our tech community and unlock a world of support, innovation, and growth
+                </div>
+                <div className="flex flex-row justify-start">
+                  <a href="https://discord.gg/9REgpp5r" target="_blank">
+                    <Button className="group flex flex-row items-center gap-x-3 bg-white text-black hover:bg-blue-800 hover:border-2 hover:border-white hover:text-white hover:scale-110 duration-300 px-4 md:px-4 md:hover:px-5 py-3 md:py-3 rounded-lg md:w-auto w-full text-sm lg:text-base font-bold">
+                      <FaDiscord className="text-blue-600 group-hover:text-white group-hover:scale-150 transition-all duration-500" size={20} /> Join Us
+                    </Button>
+                  </a>
+                </div>
               </motion.div>
               <motion.img
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: false }}
-                className="h-full w-auto ml-auto"
+                className="hidden lg:block h-full w-auto ml-auto"
                 src={frame_img}
                 alt="frame"
               />

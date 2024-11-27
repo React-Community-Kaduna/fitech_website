@@ -109,40 +109,42 @@ const Carousel = () => {
               <div className="shadow-lg flex flex-col md:flex-row-reverse h-full">
                 <div className="w-full md:w-[50%] h-[200px] md:h-[400px] lg:h-[500px]">
                   <img
-                    className={`h-full w-full object-cover transition-transform duration-700 ${
-                      activeSlide === index ? "scale-100" : "scale-110"
-                    }`}
+                    className={`h-full w-full object-cover transition-transform duration-700 ${activeSlide === index ? "scale-100" : "scale-110"
+                      }`}
                     src={d.img}
                     alt=""
                   />
                 </div>
 
                 <div className="text-white bg-[#1E90FF] w-full md:w-[50%] px-4 py-6 md:p-10 flex flex-col items-start justify-center relative min-h-[250px] md:min-h-[400px] lg:min-h-[500px]">
-                  <LucideQuote
-                    className={`absolute text-gray-800 opacity-20 w-10 h-10 md:w-14 md:h-14 top-2 left-1 transition-all duration-500 ${
-                      activeSlide === index
+                  <blockquote
+                    className={`relative z-10 transition-all duration-500 ${activeSlide === index
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-full opacity-0"
+                      }`}
+                  >
+                    <LucideQuote size={80}
+                      className={`hidden lg:block [transform:rotateY(180deg)] absolute text-gray-800/40 -top-8 -left-8 transition-all duration-500 ${activeSlide === index
                         ? "translate-y-0 opacity-20"
                         : "-translate-y-full opacity-0"
-                    }`}
-                  />
-                  <blockquote
-                    className={`relative z-10 transition-all duration-500 ${
-                      activeSlide === index
-                        ? "translate-x-0 opacity-100"
-                        : "translate-x-full opacity-0"
-                    }`}
-                  >
-                    <p className="text-[14px] md:text-[16px] leading-relaxed italic max-h-[150px] md:max-h-none overflow-y-auto md:overflow-visible pr-2">
+                        }`}
+                    />
+                    <LucideQuote size={64}
+                      className={`lg:hidden absolute [transform:rotateY(180deg)] text-gray-800/50 w-10 h-10 md:w-14 md:h-14 -top-5 -left-1 transition-all duration-500 ${activeSlide === index
+                        ? "translate-y-0 opacity-20"
+                        : "-translate-y-full opacity-0"
+                        }`}
+                    />
+                    <p className="text-[14px] md:text-[16px] leading-loose text-left text-pretty font-bold lg:text-left italic max-h-[150px] md:max-h-[320px] overflow-y-auto md:overflow-auto pr-2">
                       {d.review}
                     </p>
                     <div
-                      className={`transition-all duration-500 delay-200 mt-4 md:mt-5 ${
-                        activeSlide === index
-                          ? "translate-y-0 opacity-100"
-                          : "translate-y-4 opacity-0"
-                      }`}
+                      className={`transition-all duration-500 delay-200 mt-4 md:mt-5 ${activeSlide === index
+                        ? "translate-y-0 opacity-100"
+                        : "translate-y-4 opacity-0"
+                        }`}
                     >
-                      <h4 className="text-[14px] md:text-[16px] font-semibold">
+                      <h4 className="text-[14px] md:text-[16px] text-center lg:text-left font-semibold">
                         {d.name}
                       </h4>
                       {d.description && (

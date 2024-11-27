@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import NavBar from "../Components/NavBar";
+import NavBar, { NavBarContent, PageNavBar } from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import bg from "../assets/hero_bg_about.png";
 import bg1 from "../assets/bg1.png";
@@ -15,6 +15,7 @@ import { NavLink, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { LucideHeart } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -57,60 +58,11 @@ function About() {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-none">
-      <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
-        <div className="md:flex items-center justify-between px-7 z-50">
-          <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
-            <Link to="/">
-              <img className="w-[150px]" src={logo} alt="Community logo" />
-            </Link>
-          </div>
-          <button
-            className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
-            onClick={() => setIsMenuOpen((e) => !e)}
-          >
-            {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
-          </button>
-          <div
-            className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 p-5 gap-5 transition-all duration-500 ease-in ${
-              isMenuOpen ? "top-0 opacity-100 pt-14" : "top-[-550px]"
-            }`}
-          >
-            {/* Menu items */}
-            <ul className="md:flex md:items-center md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in">
-              {navigation.map((item) => (
-                <li className="md:ml-8 text-xl md:my-0 my-7">
-                  <NavLink
-                    className={({ isActive }) => {
-                      return (
-                        "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
-                        (isActive
-                          ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white")
-                      );
-                    }}
-                    key={item.name}
-                    to={item.href}
-                  >
-                    {item.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-            <span className="flex flex-col md:flex-row gap-5">
-              <Link to="/registration">
-                <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                  Register Now
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                  Contact Us
-                </Button>
-              </Link>
-            </span>
-          </div>
-        </div>
-      </NavBar>
+      {/* <NavBar className="w-full fixed top-0 left-0 z-50 bg-[#e5e5e5]">
+        <NavBarContent />
+      </NavBar> */}
+      <PageNavBar />
+
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-8 mt-[70px] md:mt-[100px] lg:mt-[150px]">
         {/* Hero Section */}
         <section className="container mx-auto py-8 md:py-10 lg:py-12">
@@ -126,13 +78,13 @@ function About() {
             <motion.div {...slideIn} className="relative z-10 w-full p-6">
               <motion.h1
                 {...fadeInUp}
-                className="text-3xl md:text-4xl text-gray-900 mb-4 sm:mb-6 mt-5 sm:-mt-0"
+                className="text-4xl md:text-4xl text-gray-900 text-balance leading-snug mb-4 sm:mb-6 mt-5 sm:-mt-0"
               >
-                Uniting Innovators <br /> and Tech Enthusiasts
+                Uniting Innovators and Tech Enthusiasts
               </motion.h1>
               <motion.p
                 {...fadeInUp}
-                className="mt-4 text-base lg:text-lg mb-10"
+                className="mt-4 text-base lg:text-lg leading-relaxed mb-10"
               >
                 Fitech is a vibrant, diverse community of tech enthusiasts
                 across all disciplines and specialties. Whether you're a
@@ -142,7 +94,7 @@ function About() {
               </motion.p>
               <motion.div {...fadeInUp}>
                 <a href="https://discord.gg/9REgpp5r">
-                  <Button className="bg-[#1E90FF] px-7 py-2 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
+                  <Button className="bg-[#1E90FF] px-7 py-3 rounded-xl hover:bg-gray-500 duration-500 text-white md:w-auto w-full">
                     Join the Community
                   </Button>
                 </a>
@@ -164,13 +116,13 @@ function About() {
             >
               <motion.h2
                 {...fadeInUp}
-                className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
+                className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
               >
                 Our Journey
               </motion.h2>
               <motion.p
                 {...fadeInUp}
-                className="font-[400] mt-4 text-base lg:text-lg mb-10 max-w-xl"
+                className="font-[400] mt-4 text-base lg:text-lg leading-loose mb-10 max-w-xl"
               >
                 Founded in 2021, we've rapidly created a vibrant space where
                 innovators connect, share expertise, and access top-tier
@@ -186,7 +138,11 @@ function About() {
                     Join us
                   </Button>
                 </a>
-                <Button className="bg-none border-2 border-[#1E90FF] px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
+                {/* <Button className="bg-none border-2 border-[#1E90FF] px-7 py-3 rounded-[0.5rem] hover:bg-gray-500 hover:text-white duration-500 w-full sm:w-auto">
+                  Become a Sponsor
+                </Button> */}
+                <Button className="flex flex-row justify-center items-center gap-x-4 bg-[#1E90FF2F] borde border-[#1E90FF] px-4 md:px-5 py-2 md:py-3 rounded-lg hover:bg-gray-500 hover:text-white duration-500 md:w-auto w-full text-base">
+                  {/* <LucideHeart fill="red" strokeWidth={0} size={24} /> */}
                   Become a Sponsor
                 </Button>
               </motion.div>
@@ -213,13 +169,13 @@ function About() {
             >
               <motion.h3
                 {...fadeInUp}
-                className="text-2xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
+                className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 mt-5 sm:mt-0"
               >
                 Our Mission
               </motion.h3>
               <motion.p
                 {...fadeInUp}
-                className="font-[400] mt-4 text-base lg:text-lg mb-10"
+                className="font-[400] mt-4 text-base lg:text-lg leading-loose mb-10"
               >
                 We aim to foster and grow a community of global innovators,
                 where every member is empowered to learn, innovate boldly, and
@@ -265,13 +221,13 @@ function About() {
           >
             <motion.h2
               {...fadeInUp}
-              className="text-2xl md:text-4xl font-bold text-white mb-4 sm:mb-6 sm:-mt-0"
+              className="text-3xl md:text-4xl font-bold text-white py-4 mb-4 sm:mb-6 sm:-mt-0"
             >
               Community Impact
             </motion.h2>
             <motion.p
               {...fadeInUp}
-              className="mt-4 text-base lg:text-lg text-white mb-10 max-w-xl"
+              className="mt-4 text-base lg:text-lg text-white leading-loose mb-10 max-w-xl"
             >
               Our community has transformed lives by fostering innovation and
               growth. Through engaging bootcamps, invaluable mentorship,interns

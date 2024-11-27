@@ -16,11 +16,11 @@ const data = [
     description: "Founder and Community Lead",
     img: cardImg1,
   },
-  {
-    name: "Mayowa Obisesan",
-    description: "Lead Developer",
-    img: cardImg2,
-  },
+  // {
+  //   name: "Mayowa Obisesan",
+  //   description: "Lead Developer",
+  //   img: cardImg2,
+  // },
   {
     name: "Steven George",
     description: "Community Manager",
