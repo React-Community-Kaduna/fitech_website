@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import NavBar, { NavBarContent } from "../Components/NavBar";
+import NavBar, { NavBarContent, PageNavBar } from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/contactBg.jpeg";
 import Button from "../Components/Button";
@@ -100,6 +100,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <PageNavBar />
       {/* Hero Section */}
       <section className="relative w-full h-[80%] mt-0">
         <div
@@ -110,14 +111,15 @@ const Contact = () => {
         />
 
         <div className="relative z-10 bg-transparent">
-          <NavBar
+          {/* <NavBar
             className={`w-full fixed top-0 left-0 z-50 ${isScrolled
               ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
               : "bg-transparent"
               } transition-colors duration-500`}
           >
             <NavBarContent />
-          </NavBar>
+          </NavBar> */}
+
 
           <motion.div
             initial="hidden"

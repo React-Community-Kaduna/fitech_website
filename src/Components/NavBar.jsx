@@ -5,6 +5,7 @@ import { MdOutlineClose } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Button from "./Button";
 import { navigationList } from "../constants";
+import { LucidePhone } from "lucide-react";
 
 // eslint-disable-next-line no-unused-vars
 function NavBar({ type, variant, className, children }) {
@@ -56,15 +57,15 @@ export function NavBarContent() {
             </li>
           ))}
         </ul>
-        <span className="flex flex-col md:flex-row gap-5">
+        <span className="flex flex-col items-center md:flex-row gap-5">
           <Link to="/registration">
             <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Register Now
             </Button>
           </Link>
           <Link to="/contact">
-            <Button className="bg-none px-5 py-3 border-2 border-black rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-              Contact Us
+            <Button className="group flex flex-row items-center gap-x-3 bg-none px-5 py-3 border border-[#BBBBBB] rounded-lg hover:bg-gray-200 hover:text-black duration-500">
+              <LucidePhone size={16} className="group-hover:animate-pulse group-hover:scale-110 transition-all duration-300" /> Contact Us
             </Button>
           </Link>
         </span>
