@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { LucideQuote } from "lucide-react";
-import NavBar from "../Components/NavBar";
+import NavBar, { NavBarContent, PageNavBar } from "../Components/NavBar";
 import SubscribeForm from "../Components/SubscribeForm";
 import Footer from "../Components/Footer";
 import bgImg from "../assets/train1.jpeg";
@@ -48,9 +48,8 @@ const AnimatedSection = ({ children, className = "" }) => {
   return (
     <div
       ref={domRef}
-      className={`transition-all duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      } ${className}`}
+      className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        } ${className}`}
     >
       {children}
     </div>
@@ -97,7 +96,8 @@ const Training = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-transparent">
+    <div className="min-h-screen flex flex-col">
+      <PageNavBar />
       <section className="relative w-full h-screen mt-0 bg-transparent">
         <div
           className=" height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
@@ -106,83 +106,29 @@ const Training = () => {
           }}
         />
         <div className="relative z-10 bg-transparent">
-          <NavBar
-            className={`w-full fixed top-0 left-0 z-50 ${
-              isScrolled
-                ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
-                : "bg-transparent"
-            } transition-colors duration-500`}
+          {/* <NavBar
+            className={`w-full fixed top-0 left-0 z-50 ${isScrolled
+              ? "rounded-md bg-clip-padding"
+              : ""
+              } transition-colors duration-500`}
           >
-            <div className="md:flex items-center justify-between px-7 z-50">
-              <div className="font-bold py-5 text-2xl cursor-pointer flex items-center">
-                <Link to="/">
-                  <img className="w-[150px]" src={logo} alt="Community logo" />
-                </Link>
-              </div>
-              <button
-                className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
-                onClick={() => setIsMenuOpen((e) => !e)}
-              >
-                {isMenuOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
-              </button>
-              <div
-                className={`md:flex md:items-center md:pb-5 pb-10 absolute md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-10 p-5 gap-5 transition-all duration-500 ease-in ${
-                  isMenuOpen
-                    ? "top-0 opacity-100 pt-14"
-                    : "top-[-550px] text-white"
-                }`}
-              >
-                {/* Menu items */}
-                <ul className="md:flex md:items-center md:static bg-[#e5e5e5] md:bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 transition-all duration-500 ease-in">
-                  {navigation.map((item) => (
-                    <li className="md:ml-8 text-xl md:my-0 my-7">
-                      <NavLink
-                        className={({ isActive }) => {
-                          return (
-                            "px-3 py-2 z-50 rounded-tr-md rounded-bl-md duration-500" +
-                            (isActive
-                              ? "bg-gray-900 text-[#1E90FF] border-2 border-[#1E90FF] shadow-md shadow-[#1e8fffa1]"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-500 ease-in")
-                          );
-                        }}
-                        key={item.name}
-                        to={item.href}
-                      >
-                        {item.name}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
+            <NavBarContent />
+          </NavBar> */}
 
-                <span className="flex flex-col md:flex-row gap-5">
-                  <Link to="/registration">
-                    <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
-                      Register Now
-                    </Button>
-                  </Link>
-                  <Link to="/contact">
-                    <Button className="bg-none px-5 py-3 border-2 border-[#1E90FF] rounded-lg hover:bg-gray-500 hover:text-white duration-500">
-                      Contact Us
-                    </Button>
-                  </Link>
-                </span>
-              </div>
-            </div>
-          </NavBar>
-          <AnimatedSection className="md:ml-16 flex flex-col justify-center items-start mt-[120px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
+          <AnimatedSection className="md:ml-16 flex flex-col justify-center items-start mt-[100px] md:mt-[150px] w-full md:w-[70%] px-4 sm:px-6 lg:px-8 pt-20 text-white">
             <h1
-              className="text-3xl md:text-5xl text-white"
+              className="text-4xl md:text-5xl text-white leading-loose md:leading-relaxed"
               data-testid="hero-heading"
             >
               Unlock Your Career <br />
               Potential With <span className="text-[orangered]">Fitech</span>
             </h1>
-            <p className="my-5">
+            <p className="w-full md:w-9/12 my-5 text-xl leading-loose text-pretty">
               Unlock new opportunities with FiTech Tech Trainings. Whether
-              you're <br /> a beginner or an experienced professional, elevate
-              your skills and <br /> transform your career
+              you're a beginner or an experienced professional, elevate
+              your skills and transform your career
             </p>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row my-8">
               <Link to="/registration">
                 <Button className="bg-[#1E90FF] p-3 rounded-lg hover:bg-gray-500 duration-500 text-[white] mb-4 md:mb-0 md:mr-4 md:w-auto w-full">
                   Register Now
@@ -193,12 +139,14 @@ const Training = () => {
         </div>
       </section>
 
-      <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <AnimatedSection className="text-center">
-          <h3 className="text-xl md:text-2xl font-bold text-gray-800tld mb-4">
-            Choose the Perfect Course for Your Career
-          </h3>
-          <p>Find the Ideal course to move your career forward</p>
+      <main className="flex-1 container space-y-48 mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <AnimatedSection className="text-center space-y-16">
+          <div>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-800tld mb-4">
+              Choose the Perfect Course for Your Career
+            </h3>
+            <div className="text-base">Find the Ideal course to move your career forward</div>
+          </div>
           <div className="w-full flex flex-col md:flex-row justify-center items-center gap-10 mt-8">
             {data.map((item, index) => (
               <AnimatedSection
@@ -206,27 +154,29 @@ const Training = () => {
                 className="w-full md:w-[400px] h-[500px] bg-white rounded-lg shadow-lg relative overflow-hidden"
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <img
-                  src={item.bgImg}
-                  alt={item.course}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="w-[200px] flex flex-row items-center gap-1 absolute top-[145px] right-1 text-white px-2 py-1">
-                  <div className="bg-white text-gray-950 px-2 py-1 rounded-3xl">
-                    Online
-                  </div>
-                  <div className="bg-white text-gray-950 px-2 py-1 rounded-3xl">
-                    12 weeks
+                <div className="relative">
+                  <img
+                    src={item.bgImg}
+                    alt={item.course}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="w-full flex flex-row justify-end items-center gap-x-3 absolute bottom-1 right-0 text-white px-2 py-1">
+                    <div className="bg-white font-medium text-sm text-gray-950 px-4 py-1 rounded-full">
+                      Online
+                    </div>
+                    <div className="bg-white font-medium text-sm text-gray-950 px-4 py-1 rounded-full">
+                      12 weeks
+                    </div>
                   </div>
                 </div>
 
                 <div className="p-4">
-                  <h3 className="text-xl font-bold mb-2">{item.course}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <h3 className="text-lg font-bold mb-2 leading-loose">{item.course}</h3>
+                  <p className="text-gray-600 text-base text-pretty">{item.description}</p>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full p-5 flex items-center justify-center">
                   <Link className="w-full" to="/registration">
-                    <Button className="bg-[#1E90FF] p-3 w-full rounded-lg hover:bg-gray-500 duration-500 text-[white]">
+                    <Button className="bg-[#1E90FF] p-2 text-base w-full rounded-lg hover:bg-gray-500 duration-500 text-[white]">
                       Apply
                     </Button>
                   </Link>
@@ -235,6 +185,8 @@ const Training = () => {
             ))}
           </div>
         </AnimatedSection>
+
+        {/* WHY CHOOSE US SECTION */}
         <section className="my-20 w-full">
           <div className="flex flex-col md:flex-row justify-center items-center gap-32">
             <AnimatedSection className="relative w-full mb-8 md:mb-0">
@@ -244,9 +196,9 @@ const Training = () => {
                 alt="Fitech alumni"
               />
               <div className="absolute -bottom-2 md:-right-20 w-[250px] h-auto flex items-center justify-center rounded-2xl bg-white shadow-lg p-5">
-                <LucideQuote className="absolute text-[#FF6F00] w-8 h-9 top-2 left-1" />
+                <LucideQuote className="absolute text-[#FF6F00] w-8 h-9 top-2 left-1 [transform:rotate(180deg)]" />
                 <blockquote className="relative">
-                  <p className="text-[14px] my-7 leading-4">
+                  <p className="text-sm my-7 leading-relaxed text-pretty">
                     Fitech coding bootcamp was a game-changer for me. The
                     curriculum was comprehensive, and the instructors were
                     incredibly supportive. The hands-on projects and career
@@ -259,6 +211,7 @@ const Training = () => {
                 </blockquote>
               </div>
             </AnimatedSection>
+
             <AnimatedSection className="w-full px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
               <ul>
@@ -291,17 +244,18 @@ const Training = () => {
             </AnimatedSection>
           </div>
         </section>
+
         <section
-          className="bg-[url('../assets/back.jpeg')] bg-cover bg-no-repeat w-full h-auto rounded-2xl"
+          className="hidden bg-[url('../assets/back.jpeg')] bg-cover bg-no-repeat w-full h-auto rounded-2xl"
           style={{
             backgroundImage: `linear-gradient(to right, rgba(30,144,255, 0.3), rgba(30,144,255, 0.3)), url(${bkg})`,
           }}
         >
-          <div className="flex flex-col items-center w-full md:w-[500px] m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center w-full m-auto text-white text-center py-16 px-4 sm:px-6 lg:px-8 bg-white/20 backdrop-blur-sm">
             <h3 className="text-xl md:text-2xl font-bold mb-4 text-white text-center">
               Get Updates For Free
             </h3>
-            <p>
+            <p className="md:w-[500px]">
               Subscribe to our newsletter and never miss out on updates offers
               and expert insights
             </p>
