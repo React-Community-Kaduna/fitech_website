@@ -209,7 +209,7 @@ function Registration() {
               {
                 regPage === 1 &&
                 <section className="">
-                  <h2 className="text-[28px] font-[700] flex flex-row items-center gap-x-4">Personal Information <h4 className="font-bold text-[#FF872B]">{regPage} of 2</h4></h2>
+                  <h2 className="text-[28px] font-[700] flex flex-col md:flex-row md:items-center gap-x-4">Personal Information <h4 className="font-bold text-[#FF872B]">{regPage} of 2</h4></h2>
                   <p className="text-[14px] font-[400] mb-6">
                     Fill out your personal information carefully for registration
                   </p>

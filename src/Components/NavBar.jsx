@@ -57,7 +57,7 @@ export function NavBarContent() {
             </li>
           ))}
         </ul>
-        <span className="flex flex-col items-center md:flex-row gap-5">
+        <span className="flex flex-col md:items-center md:flex-row gap-5">
           <Link to="/registration">
             <Button className="bg-[#1E90FF] border-2 border-[#1E90FF] w-auto p-3 rounded-lg md:ml-8 hover:bg-gray-500 duration-500 text-[white]">
               Register Now
