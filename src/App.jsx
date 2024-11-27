@@ -10,7 +10,19 @@ import AdminDashboard from "./pages/adminDashboard";
 import Blog from "./pages/Blog/";
 import NotFound from "./pages/NotFound";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AdminSignIn from "./pages/admin";
+import UserAuthForm from "./pages/UserAuthForm";
+import { createContext, useState, useEffect } from "react";
+import { lookInSession } from "./Components/Sessions";
+import Verify from "./pages/verfiyUser";
+import UserDashboard from "./pages/userDashboard";
+import Application from "./Components/Trainings";
+import BlogPage from "./Components/BlogPage";
+import EventPage from "./Components/EventPage";
+import Settings from "./Components/Settings";
+
+
+// Create UserContext
+export const UserContext = createContext({});
 
 const router = createBrowserRouter([
   {
@@ -29,6 +41,10 @@ const router = createBrowserRouter([
     path: "/registration",
     element: <Registration />,
   },
+  {
+    path:"/Contact",
+    element:<Contact />
+  },
   // {
   //   path: "/events",
   //   element: <Events />,
@@ -38,25 +54,56 @@ const router = createBrowserRouter([
     element: <Blog />,
   },
   {
-    path: "/contact",
-    element: <Contact />,
-  },
-  {
-    path: "/admin",
-    element: <AdminSignIn />,
-  },
-  {
     path: "/adminDashboard",
     element: <AdminDashboard />,
+    children: [
+      { path: "Trainings", element: <Application /> },
+      { path: "BlogPage", element: <BlogPage /> },
+      { path: "EventPage", element: <EventPage /> },
+      { path: "Settings", element: <Settings /> },
+    ],
   },
+  {
+    path: "/verifyUser",
+    element: <Verify />,
+  },
+  {
+    path: "/userDashboard",
+    element: <UserDashboard />,
+  },
+  {
+    path: "/signin",
+    element: <UserAuthForm type="sign-in" />,
+  },
+  {
+    path: "/signup",
+    element: <UserAuthForm type="sign-up" />,
+  },
+
   {
     path: "*",
     element: <NotFound />,
   },
 ]);
 
-function App() {
-  return <RouterProvider router={router} />;
-}
+const App = () => {
+  const [userAuth, setUserAuth] = useState({});
+
+  // Initialize userAuth from session storage on app load
+  useEffect(() => {
+    const userInSession = lookInSession("user");
+    if (userInSession) {
+      setUserAuth(JSON.parse(userInSession));
+    } else {
+      setUserAuth({ access_token: null });
+    }
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ userAuth, setUserAuth }}>
+      <RouterProvider router={router} />
+    </UserContext.Provider>
+  );
+};
 
 export default App;
