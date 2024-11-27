@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import NavBar, { NavBarContent } from "../Components/NavBar";
+import NavBar, { NavBarContent, PageNavBar } from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import SubscribeForm from "../Components/SubscribeForm";
 import bgImg from "../assets/blogBg.jpeg";
@@ -98,6 +98,8 @@ function Blog() {
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
       <section className="relative w-full h-screen mt-0 bg-transparent">
+        <PageNavBar />
+
         <div
           className="height-full absolute inset-0 bg-gradient-to-r from-transparent to-black mix-blend-multiply bg-cover bg-no-repeat bg-center"
           style={{
@@ -105,14 +107,14 @@ function Blog() {
           }}
         />
         <div className="relative z-10 bg-transparent">
-          <NavBar
+          {/* <NavBar
             className={`w-full fixed top-0 left-0 z-50 ${isScrolled
               ? "bg-blue-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
               : "bg-transparent"
               } transition-colors duration-500`}
           >
             <NavBarContent />
-          </NavBar>
+          </NavBar> */}
 
           <motion.div
             initial="hidden"
